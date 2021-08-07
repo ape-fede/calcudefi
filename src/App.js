@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Header from './components/Header'
+import {Grid, Box, Container} from '@material-ui/core'
+import DepositedTokenSection from './components/DepositedTokenSection'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Container maxWidth="sm" style={{textAlign: 'center'}}>
+				<Grid container style={{marginTop: 15, marginBottom: 5}}>
+					<Grid item xs={12}>
+						<Box border={1}>
+							<Header />
+						</Box>
+					</Grid>
+				</Grid>
+				<Grid container>
+					<Grid item xs={12}>
+						<Box border={1}>
+							<DepositedTokenSection />
+						</Box>
+					</Grid>
+				</Grid>
+			</Container>
+		</div>
+	)
 }
 
-export default App;
+export default App
