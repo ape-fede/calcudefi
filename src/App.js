@@ -8,6 +8,7 @@ const borderStyle = {
 	border: '1px solid',
 	marginTop: '1em',
 	borderRadius: '20px',
+	boxShadow: '10px 5px 10px grey',
 }
 
 function App() {
@@ -16,9 +17,13 @@ function App() {
 			<Container maxWidth="sm" style={{textAlign: 'center'}}>
 				<Grid
 					container
-					style={{marginTop: '0.2em', marginBottom: '0.2em'}}
+					style={{
+						marginTop: '0.2em',
+						marginBottom: '0.2em',
+						justifyContent: 'center',
+					}}
 				>
-					<Grid item xs={12}>
+					<Grid item xs={6}>
 						<Box style={borderStyle}>
 							<Header />
 						</Box>

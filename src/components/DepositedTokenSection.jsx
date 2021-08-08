@@ -30,6 +30,7 @@ const borderStyle = {
 	border: '1px solid',
 	marginTop: '1em',
 	borderRadius: '20px',
+	boxShadow: '10px 5px 10px grey',
 }
 
 const DepositedTokenSection = () => {
