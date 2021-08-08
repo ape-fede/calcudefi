@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function TokenAPR(props) {
 	const classes = useStyles()
-	const {apr, setApr} = props
+	const {apr, setApr, aprState} = props
 
 	const handleAPRChange = event => {
 		if (event.target.value) {
@@ -37,10 +37,11 @@ export default function TokenAPR(props) {
 			<TextField
 				id="standard-basic"
 				label="APR"
-				value={apr.TAPR}
+				value={`${apr.TAPR} %`}
 				onChange={event => {
 					handleAPRChange(event)
 				}}
+				disabled={aprState}
 			/>
 		</form>
 	)

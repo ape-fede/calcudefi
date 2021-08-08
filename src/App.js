@@ -20,7 +20,7 @@ function App() {
 				</Grid>
 				<Grid container>
 					<Grid item xs={12}>
-						<Box border={1}>
+						<Box>
 							<DepositedTokenSection />
 						</Box>
 					</Grid>

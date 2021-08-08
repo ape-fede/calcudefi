@@ -26,10 +26,16 @@ const tasksProps = {
 	'disabled': false,
 }
 
+const divStyle = {
+	border: '1px solid',
+	marginTop: '1em',
+}
+
 const DepositedTokenSection = () => {
 	const [starterTokens, setStarterTokens] = useState(IstarterTokens)
 	const [finalTokens, setFinalTokens] = useState(IfinalTokens)
 	const [apr, setApr] = useState(IAPR)
+	const [aprState, setAprState] = useState(false)
 	const [startDate, setStartDate] = useState(null)
 	const [finalDate, setFinalDate] = useState(null)
 	const [taskA, setTaskA] = useState(tasksProps)
@@ -46,10 +52,10 @@ const DepositedTokenSection = () => {
 				startDate,
 				finalDate,
 			)
-			console.log(apr2)
 			setApr(prevState => {
 				return {TAPR: apr2}
 			})
+			setAprState(true)
 		}
 	}, [
 		taskA,
@@ -65,82 +71,107 @@ const DepositedTokenSection = () => {
 
 	return (
 		<>
-			<Grid container>
-				<Grid item xs={12}>
-					<p>Paso 1</p>
-					<p>¿Qué desea realizar?</p>
+			<div style={divStyle}>
+				<Grid container>
+					<Grid item xs={12}>
+						<p style={{marginBottom: 0}}>
+							Paso 1: ¿Qué desea realizar?
+						</p>
+					</Grid>
 				</Grid>
-			</Grid>
-			<Grid container spacing={3}>
-				<Grid item xs={12}>
-					<Box border={1}>
-						<TaskSelector
-							taskA={taskA}
-							taskB={taskB}
-							taskC={taskC}
-							taskD={taskD}
-							taskE={taskE}
-							setTaskA={setTaskA}
-							setTaskB={setTaskB}
-							setTaskC={setTaskC}
-							setTaskD={setTaskD}
-							setTaskE={setTaskE}
-						/>
-					</Box>
+				<Grid container spacing={3}>
+					<Grid item xs={12}>
+						<Box style={{margin: '1em'}}>
+							<TaskSelector
+								taskA={taskA}
+								taskB={taskB}
+								taskC={taskC}
+								taskD={taskD}
+								taskE={taskE}
+								setTaskA={setTaskA}
+								setTaskB={setTaskB}
+								setTaskC={setTaskC}
+								setTaskD={setTaskD}
+								setTaskE={setTaskE}
+								setAprState={setAprState}
+							/>
+						</Box>
+					</Grid>
 				</Grid>
-			</Grid>
-			<Grid container>
-				<Grid item xs={12}>
-					<Box>
-						<p>Paso 2</p>
-						<p>Complete los campos indicados</p>
-					</Box>
-				</Grid>
-			</Grid>
-			<Grid container direction="row" justifyContent="center" spacing={3}>
-				<Grid item xs={12} sm={6}>
-					<Box>
-						<DepositedTokensInput
-							starterTokens={starterTokens}
-							setStarterTokens={setStarterTokens}
-						/>
-					</Box>
-				</Grid>
-				<Grid item xs={12} sm={6}>
-					<Box>
-						<DateAndTimePickers
-							id={'start'}
-							setStartDate={setStartDate}
-						/>
-					</Box>
-				</Grid>
-				<Grid item xs={12} sm={6}>
-					<Box>
-						<FinalTokenInput
-							finalTokens={finalTokens}
-							setFinalTokens={setFinalTokens}
-						/>
-					</Box>
-				</Grid>
-				<Grid item xs={12} sm={6}>
-					<Box>
-						<DateAndTimePickers
-							id={'final'}
-							setFinalDate={setFinalDate}
-						/>
-					</Box>
-				</Grid>
-				<Grid item xs={12} sm={6}>
-					<Box>
-						<TokenAPR apr={apr} setApr={setApr} />
-					</Box>
-				</Grid>
-			</Grid>
-			<Grid container>
-				<Grid item xs={12}>
-					<p> Nota: utilizar el punto como separador decimal</p>
-				</Grid>
-			</Grid>
+			</div>
+
+			{/* PASO 2 */}
+			{taskA.checked ||
+			taskB.checked ||
+			taskC.checked ||
+			taskD.checked ||
+			taskE.checked ? (
+				<div style={divStyle}>
+					<Grid container>
+						<Grid item xs={12}>
+							<Box>
+								<p>Paso 2: Complete los campos indicados</p>
+							</Box>
+						</Grid>
+					</Grid>
+					<Grid
+						container
+						direction="row"
+						justifyContent="center"
+						spacing={3}
+					>
+						<Grid item xs={12} sm={6}>
+							<Box>
+								<DepositedTokensInput
+									starterTokens={starterTokens}
+									setStarterTokens={setStarterTokens}
+								/>
+							</Box>
+						</Grid>
+						<Grid item xs={12} sm={6}>
+							<Box>
+								<DateAndTimePickers
+									id={'start'}
+									setStartDate={setStartDate}
+								/>
+							</Box>
+						</Grid>
+						<Grid item xs={12} sm={6}>
+							<Box>
+								<FinalTokenInput
+									finalTokens={finalTokens}
+									setFinalTokens={setFinalTokens}
+								/>
+							</Box>
+						</Grid>
+						<Grid item xs={12} sm={6}>
+							<Box>
+								<DateAndTimePickers
+									id={'final'}
+									setFinalDate={setFinalDate}
+								/>
+							</Box>
+						</Grid>
+						<Grid item xs={12} sm={6}>
+							<Box>
+								<TokenAPR
+									apr={apr}
+									setApr={setApr}
+									aprState={aprState}
+								/>
+							</Box>
+						</Grid>
+					</Grid>
+					<Grid container>
+						<Grid item xs={12}>
+							<p>
+								{' '}
+								Nota: utilizar el punto como separador decimal
+							</p>
+						</Grid>
+					</Grid>
+				</div>
+			) : null}
 		</>
 	)
 }

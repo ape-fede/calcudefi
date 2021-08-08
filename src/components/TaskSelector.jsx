@@ -15,6 +15,7 @@ export default function TaskSelector(props) {
 		setTaskC,
 		setTaskD,
 		setTaskE,
+		setAprState,
 	} = props
 
 	const handleChange = event => {
@@ -53,76 +54,88 @@ export default function TaskSelector(props) {
 				setTaskE({...taskE, 'checked': true, 'disabled': false})
 			}
 		} else {
+			// reset default values
 			setTaskA({...taskA, 'checked': false, 'disabled': false})
 			setTaskB({...taskB, 'checked': false, 'disabled': false})
 			setTaskC({...taskC, 'checked': false, 'disabled': false})
 			setTaskD({...taskD, 'checked': false, 'disabled': false})
 			setTaskE({...taskE, 'checked': false, 'disabled': false})
+			setAprState(false)
 		}
 	}
 
 	return (
 		<FormGroup row={false}>
-			<FormControlLabel
-				control={
-					<Checkbox
-						checked={taskA.checkedA}
-						onChange={handleChange}
-						name="A"
-						color="primary"
-						disabled={taskA.disabled}
-					/>
-				}
-				label="Calcular APR pasado"
-			/>
-			<FormControlLabel
-				control={
-					<Checkbox
-						checked={taskB.checkedB}
-						onChange={handleChange}
-						name="B"
-						color="primary"
-						disabled={taskB.disabled}
-					/>
-				}
-				label="Calcular rendimiento en USD"
-			/>
-			<FormControlLabel
-				control={
-					<Checkbox
-						checked={taskC.checkedC}
-						onChange={handleChange}
-						name="C"
-						color="primary"
-						disabled={taskC.disabled}
-					/>
-				}
-				label="Calcular cuántos Tokens tendré"
-			/>
-			<FormControlLabel
-				control={
-					<Checkbox
-						checked={taskD.checkedD}
-						onChange={handleChange}
-						name="D"
-						color="primary"
-						disabled={taskD.disabled}
-					/>
-				}
-				label="Calcular cuánto tiempo demoraría juntar 'x' cantidad de Tokens"
-			/>
-			<FormControlLabel
-				control={
-					<Checkbox
-						checked={taskE.checkedE}
-						onChange={handleChange}
-						name="E"
-						color="primary"
-						disabled={taskE.disabled}
-					/>
-				}
-				label="Calcular Tokens necesarios para juntar 'x' cantidad de Tokens en un período de tiempo dado"
-			/>
+			{taskA.disabled ? null : (
+				<FormControlLabel
+					control={
+						<Checkbox
+							checked={taskA.checkedA}
+							onChange={handleChange}
+							name="A"
+							color="primary"
+							disabled={taskA.disabled}
+						/>
+					}
+					label="Calcular APR pasado"
+				/>
+			)}
+			{taskB.disabled ? null : (
+				<FormControlLabel
+					control={
+						<Checkbox
+							checked={taskB.checkedB}
+							onChange={handleChange}
+							name="B"
+							color="primary"
+							disabled={taskB.disabled}
+						/>
+					}
+					label="Calcular rendimiento en USD (proximamente...)"
+				/>
+			)}
+			{taskC.disabled ? null : (
+				<FormControlLabel
+					control={
+						<Checkbox
+							checked={taskC.checkedC}
+							onChange={handleChange}
+							name="C"
+							color="primary"
+							disabled={taskC.disabled}
+						/>
+					}
+					label="Calcular cuántos Tokens tendré (proximamente...)"
+				/>
+			)}
+			{taskD.disabled ? null : (
+				<FormControlLabel
+					control={
+						<Checkbox
+							checked={taskD.checkedD}
+							onChange={handleChange}
+							name="D"
+							color="primary"
+							disabled={taskD.disabled}
+						/>
+					}
+					label="Calcular cuánto tiempo demoraría juntar 'x' cantidad de Tokens (proximamente...)"
+				/>
+			)}
+			{taskE.disabled ? null : (
+				<FormControlLabel
+					control={
+						<Checkbox
+							checked={taskE.checkedE}
+							onChange={handleChange}
+							name="E"
+							color="primary"
+							disabled={taskE.disabled}
+						/>
+					}
+					label="Calcular Tokens necesarios para juntar 'x' cantidad de Tokens en un período de tiempo dado (proximamente...)"
+				/>
+			)}
 		</FormGroup>
 	)
 }
