@@ -109,7 +109,7 @@ export default function TaskSelector(props) {
 						disabled={taskD.disabled}
 					/>
 				}
-				label="Calcular en cuánto tiempo demoraría juntar 'x' cantidad de Tokens"
+				label="Calcular cuánto tiempo demoraría juntar 'x' cantidad de Tokens"
 			/>
 			<FormControlLabel
 				control={
@@ -121,7 +121,7 @@ export default function TaskSelector(props) {
 						disabled={taskE.disabled}
 					/>
 				}
-				label="Calcular tokens necesarios para juntar 'x' cantidad de Tokens en un período de tiempo dado"
+				label="Calcular Tokens necesarios para juntar 'x' cantidad de Tokens en un período de tiempo dado"
 			/>
 		</FormGroup>
 	)
