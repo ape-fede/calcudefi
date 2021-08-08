@@ -26,9 +26,10 @@ const tasksProps = {
 	'disabled': false,
 }
 
-const divStyle = {
+const borderStyle = {
 	border: '1px solid',
 	marginTop: '1em',
+	borderRadius: '20px',
 }
 
 const DepositedTokenSection = () => {
@@ -71,7 +72,7 @@ const DepositedTokenSection = () => {
 
 	return (
 		<>
-			<div style={divStyle}>
+			<div style={borderStyle}>
 				<Grid container>
 					<Grid item xs={12}>
 						<p style={{marginBottom: 0}}>
@@ -106,7 +107,7 @@ const DepositedTokenSection = () => {
 			taskC.checked ||
 			taskD.checked ||
 			taskE.checked ? (
-				<div style={divStyle}>
+				<div style={borderStyle}>
 					<Grid container>
 						<Grid item xs={12}>
 							<Box>
