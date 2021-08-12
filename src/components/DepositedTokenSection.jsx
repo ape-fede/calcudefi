@@ -5,7 +5,7 @@ import DepositedTokensInput from './DepositedTokensInput'
 import FinalTokenInput from './FinalTokenInput'
 import TaskSelector from './TaskSelector'
 import TokenAPR from './TokenAPR'
-import {calculateAPR} from './TasksFunctions'
+import {calculateAPR, calculateFutureTokens} from './TasksFunctions'
 
 const IstarterTokens = {
 	amount: 0,
@@ -17,8 +17,8 @@ const IfinalTokens = {
 }
 
 const IAPR = {
-	TAPR: 0,
-	USDAPR: Number,
+	TAPR: 0, // Tokens APR
+	USDAPR: Number, // Dolars APR
 }
 
 const tasksProps = {
@@ -36,8 +36,10 @@ const borderStyle = {
 const DepositedTokenSection = () => {
 	const [starterTokens, setStarterTokens] = useState(IstarterTokens)
 	const [finalTokens, setFinalTokens] = useState(IfinalTokens)
+	const [finalTokensDisabledState, setFinalTokensDisabledState] =
+		useState(false)
 	const [apr, setApr] = useState(IAPR)
-	const [aprState, setAprState] = useState(false)
+	const [aprDisabledState, setAprDisabledState] = useState(false)
 	const [startDate, setStartDate] = useState(null)
 	const [finalDate, setFinalDate] = useState(null)
 	const [taskA, setTaskA] = useState(tasksProps)
@@ -45,6 +47,16 @@ const DepositedTokenSection = () => {
 	const [taskC, setTaskC] = useState(tasksProps)
 	const [taskD, setTaskD] = useState(tasksProps)
 	const [taskE, setTaskE] = useState(tasksProps)
+
+	const resetValues = () => {
+		setStarterTokens(0)
+		setFinalTokens(0)
+		setAprDisabledState(false)
+		setFinalTokensDisabledState(false)
+		setApr(prevState => {
+			return {TAPR: 0}
+		})
+	}
 
 	useEffect(() => {
 		if (taskA.checked === true) {
@@ -57,7 +69,7 @@ const DepositedTokenSection = () => {
 			setApr(prevState => {
 				return {TAPR: apr2}
 			})
-			setAprState(true)
+			setAprDisabledState(true)
 		}
 	}, [
 		taskA,
@@ -69,6 +81,31 @@ const DepositedTokenSection = () => {
 		finalTokens,
 		startDate,
 		finalDate,
+	])
+
+	useEffect(() => {
+		if (taskC.checked === true) {
+			let futureTokens = calculateFutureTokens(
+				starterTokens,
+				startDate,
+				finalDate,
+				apr.TAPR,
+			)
+			setFinalTokens(() => {
+				return {amount: futureTokens}
+			})
+			setFinalTokensDisabledState(true)
+		}
+	}, [
+		taskA,
+		taskB,
+		taskC,
+		taskD,
+		taskE,
+		starterTokens,
+		startDate,
+		finalDate,
+		apr.TAPR,
 	])
 
 	return (
@@ -95,7 +132,7 @@ const DepositedTokenSection = () => {
 								setTaskC={setTaskC}
 								setTaskD={setTaskD}
 								setTaskE={setTaskE}
-								setAprState={setAprState}
+								resetValues={resetValues}
 							/>
 						</Box>
 					</Grid>
@@ -143,6 +180,9 @@ const DepositedTokenSection = () => {
 								<FinalTokenInput
 									finalTokens={finalTokens}
 									setFinalTokens={setFinalTokens}
+									finalTokensDisabledState={
+										finalTokensDisabledState
+									}
 								/>
 							</Box>
 						</Grid>
@@ -159,7 +199,7 @@ const DepositedTokenSection = () => {
 								<TokenAPR
 									apr={apr}
 									setApr={setApr}
-									aprState={aprState}
+									aprDisabledState={aprDisabledState}
 								/>
 							</Box>
 						</Grid>
@@ -167,7 +207,6 @@ const DepositedTokenSection = () => {
 					<Grid container>
 						<Grid item xs={12}>
 							<p>
-								{' '}
 								Nota: utilizar el punto como separador decimal
 							</p>
 						</Grid>

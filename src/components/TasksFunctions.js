@@ -27,3 +27,45 @@ export function calculateAPR(starterTokens, finalTokens, startDate, finalDate) {
 
 	return result
 }
+
+//////////////////////////////
+
+export function calculateFutureTokens(
+	starterTokens,
+	startDate,
+	finalDate,
+	apr,
+) {
+	// calculate elapsed time in minutes
+
+	startDate = new Date(startDate)
+	startDate = startDate.getTime()
+	finalDate = new Date(finalDate)
+	finalDate = finalDate.getTime()
+	let elapsedMinutes = (finalDate - startDate) / 60000
+	elapsedMinutes = Math.round(elapsedMinutes)
+
+	// calculate actual apr
+
+	let actualApr = (apr * elapsedMinutes) / 525600
+	actualApr = actualApr / 100
+
+	//calculate profit
+
+	let profit = starterTokens.amount * actualApr
+	profit = Math.round(profit * 100) / 100
+
+	// calcuale final tokens
+
+	let result = parseInt(starterTokens.amount) + parseInt(profit)
+
+	// validate result
+
+	if (result === Infinity || result === -Infinity) {
+		result = 0
+	} else if (isNaN(result)) {
+		result = 0
+	}
+
+	return result
+}

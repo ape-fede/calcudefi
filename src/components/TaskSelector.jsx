@@ -15,7 +15,7 @@ export default function TaskSelector(props) {
 		setTaskC,
 		setTaskD,
 		setTaskE,
-		setAprState,
+		resetValues,
 	} = props
 
 	const handleChange = event => {
@@ -60,7 +60,7 @@ export default function TaskSelector(props) {
 			setTaskC({...taskC, 'checked': false, 'disabled': false})
 			setTaskD({...taskD, 'checked': false, 'disabled': false})
 			setTaskE({...taskE, 'checked': false, 'disabled': false})
-			setAprState(false)
+			resetValues()
 		}
 	}
 
@@ -105,7 +105,7 @@ export default function TaskSelector(props) {
 							disabled={taskC.disabled}
 						/>
 					}
-					label="Calcular cuántos Tokens tendré (proximamente...)"
+					label="Calcular cuántos Tokens tendré"
 				/>
 			)}
 			{taskD.disabled ? null : (

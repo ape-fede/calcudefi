@@ -13,15 +13,22 @@ const useStyles = makeStyles(theme => ({
 
 export default function TokenAPR(props) {
 	const classes = useStyles()
-	const {apr, setApr, aprState} = props
+	const {apr, setApr, aprDisabledState} = props
 
 	const handleAPRChange = event => {
-		if (event.target.value) {
+		let value = event.target.value
+		toString(value)
+		let reg = /[%]|[\s]/g
+		console.log(value)
+		let value2 = value.replace(reg, '')
+		parseInt(value2)
+		console.log(value2)
+		if (value2) {
 			setApr(prevState => {
 				if (prevState.TAPR === 0) {
-					return {TAPR: event.target.value.split('0')[1]}
+					return {TAPR: value2.split('0')[1]}
 				} else {
-					return {...prevState, TAPR: event.target.value}
+					return {...prevState, TAPR: value2}
 				}
 			})
 			event.preventDefault()
@@ -37,11 +44,11 @@ export default function TokenAPR(props) {
 			<TextField
 				id="standard-basic"
 				label="APR"
-				value={`${apr.TAPR} %`}
+				value={`${apr.TAPR}%`}
 				onChange={event => {
 					handleAPRChange(event)
 				}}
-				disabled={aprState}
+				disabled={aprDisabledState}
 			/>
 		</form>
 	)

@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function FinalTokenInput(props) {
 	const classes = useStyles()
-	const {finalTokens, setFinalTokens} = props
+	const {finalTokens, setFinalTokens, finalTokensDisabledState} = props
 
 	const handleTokensChange = event => {
 		if (event.target.value) {
@@ -41,6 +41,7 @@ export default function FinalTokenInput(props) {
 				onChange={event => {
 					handleTokensChange(event)
 				}}
+				disabled={finalTokensDisabledState}
 			/>
 		</form>
 	)
