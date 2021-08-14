@@ -77,7 +77,7 @@ export default function TaskSelector(props) {
 							disabled={taskA.disabled}
 						/>
 					}
-					label="Calcular APR pasado"
+					label="APR pasado"
 				/>
 			)}
 			{taskB.disabled ? null : (
@@ -91,7 +91,7 @@ export default function TaskSelector(props) {
 							disabled={taskB.disabled}
 						/>
 					}
-					label="Calcular rendimiento en USD (proximamente...)"
+					label="Rendimiento en USD (proximamente...)"
 				/>
 			)}
 			{taskC.disabled ? null : (
@@ -105,7 +105,7 @@ export default function TaskSelector(props) {
 							disabled={taskC.disabled}
 						/>
 					}
-					label="Calcular cuántos Tokens tendré"
+					label="Cuántos Tokens tendré"
 				/>
 			)}
 			{taskD.disabled ? null : (
@@ -119,7 +119,7 @@ export default function TaskSelector(props) {
 							disabled={taskD.disabled}
 						/>
 					}
-					label="Calcular cuánto tiempo demoraría juntar 'x' cantidad de Tokens (proximamente...)"
+					label="Cuánto demoraría juntar 'x' cantidad de Tokens"
 				/>
 			)}
 			{taskE.disabled ? null : (
@@ -133,7 +133,7 @@ export default function TaskSelector(props) {
 							disabled={taskE.disabled}
 						/>
 					}
-					label="Calcular Tokens necesarios para juntar 'x' cantidad de Tokens en un período de tiempo dado (proximamente...)"
+					label="Tokens necesarios para juntar 'x' cantidad de Tokens en un período de tiempo dado (proximamente...)"
 				/>
 			)}
 		</FormGroup>

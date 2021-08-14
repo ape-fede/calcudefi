@@ -6,14 +6,14 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		'& > *': {
 			margin: theme.spacing(1),
-			width: '25ch',
+			width: 200,
 		},
 	},
 }))
 
 export default function FinalTokenInput(props) {
 	const classes = useStyles()
-	const {finalTokens, setFinalTokens, finalTokensDisabledState} = props
+	const {finalTokens, setFinalTokens, finalTokensDisabledState, label} = props
 
 	const handleTokensChange = event => {
 		if (event.target.value) {
@@ -36,7 +36,7 @@ export default function FinalTokenInput(props) {
 		<form className={classes.root} noValidate autoComplete="off">
 			<TextField
 				id="standard-basic"
-				label="Tokens finales"
+				label={label ? label : 'Tokens finales'}
 				value={finalTokens.amount}
 				onChange={event => {
 					handleTokensChange(event)

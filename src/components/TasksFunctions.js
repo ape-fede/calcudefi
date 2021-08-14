@@ -58,6 +58,7 @@ export function calculateFutureTokens(
 
 	let profit = starterTokens.amount * actualApr
 	profit = Math.round(profit * 100) / 100
+
 	//console.log(profit)
 
 	// calcuale final tokens
@@ -73,4 +74,23 @@ export function calculateFutureTokens(
 	}
 
 	return result
+}
+
+/////////////////////////////
+
+export function calculateTime(starterTokens, finalTokens, apr) {
+	console.log(starterTokens)
+	console.log(finalTokens)
+	console.log(apr)
+
+	// calculate time
+	let anualRevenue = starterTokens * (apr / 100)
+	console.log(anualRevenue)
+	let days = (finalTokens * 365) / anualRevenue
+	console.log(days)
+	days = Math.round(days * 100) / 100
+
+	// validate result
+
+	return days
 }

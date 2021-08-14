@@ -5,7 +5,12 @@ import DepositedTokensInput from './DepositedTokensInput'
 import FinalTokenInput from './FinalTokenInput'
 import TaskSelector from './TaskSelector'
 import TokenAPR from './TokenAPR'
-import {calculateAPR, calculateFutureTokens} from './TasksFunctions'
+import {
+	calculateAPR,
+	calculateFutureTokens,
+	calculateTime,
+} from './TasksFunctions'
+import NecessaryTime from './NecessaryTime'
 
 const IstarterTokens = {
 	amount: 0,
@@ -47,6 +52,7 @@ const DepositedTokenSection = () => {
 	const [taskC, setTaskC] = useState(tasksProps)
 	const [taskD, setTaskD] = useState(tasksProps)
 	const [taskE, setTaskE] = useState(tasksProps)
+	const [necessaryTime, setNecessaryTime] = useState(0)
 
 	const resetValues = () => {
 		setStarterTokens(0)
@@ -108,13 +114,33 @@ const DepositedTokenSection = () => {
 		apr.TAPR,
 	])
 
+	useEffect(() => {
+		if (taskD.checked === true) {
+			let time = calculateTime(
+				starterTokens.amount,
+				finalTokens.amount,
+				apr.TAPR,
+			)
+			setNecessaryTime(time)
+		}
+	}, [
+		taskA,
+		taskB,
+		taskC,
+		taskD,
+		taskE,
+		starterTokens,
+		finalTokens,
+		apr.TAPR,
+	])
+
 	return (
 		<>
 			<div style={borderStyle}>
 				<Grid container>
 					<Grid item xs={12}>
 						<p style={{marginBottom: 0}}>
-							Paso 1: ¿Qué desea realizar?
+							Paso 1: ¿Qué desea calcular?
 						</p>
 					</Grid>
 				</Grid>
@@ -143,7 +169,6 @@ const DepositedTokenSection = () => {
 			{taskA.checked ||
 			taskB.checked ||
 			taskC.checked ||
-			taskD.checked ||
 			taskE.checked ? (
 				<div style={borderStyle}>
 					<Grid container>
@@ -202,6 +227,66 @@ const DepositedTokenSection = () => {
 									setApr={setApr}
 									aprDisabledState={aprDisabledState}
 								/>
+							</Box>
+						</Grid>
+					</Grid>
+					<Grid container>
+						<Grid item xs={12}>
+							<p>
+								Nota: utilizar el punto como separador decimal
+							</p>
+						</Grid>
+					</Grid>
+				</div>
+			) : null}
+			{taskD.checked ? (
+				<div style={borderStyle}>
+					<Grid container>
+						<Grid item xs={12}>
+							<Box>
+								<p>Paso 2: Complete los campos indicados</p>
+							</Box>
+						</Grid>
+					</Grid>
+					<Grid
+						container
+						direction="row"
+						justifyContent="center"
+						spacing={3}
+					>
+						<Grid item xs={12} sm={6}>
+							<Box>
+								<DepositedTokensInput
+									label={'Tokens depositados'}
+									starterTokens={starterTokens}
+									setStarterTokens={setStarterTokens}
+								/>
+							</Box>
+						</Grid>
+						<Grid item xs={12} sm={6}>
+							<Box>
+								<FinalTokenInput
+									label={'Tokens a juntar'}
+									finalTokens={finalTokens}
+									setFinalTokens={setFinalTokens}
+									finalTokensDisabledState={
+										finalTokensDisabledState
+									}
+								/>
+							</Box>
+						</Grid>
+						<Grid item xs={12} sm={12}>
+							<Box>
+								<TokenAPR
+									apr={apr}
+									setApr={setApr}
+									aprDisabledState={aprDisabledState}
+								/>
+							</Box>
+						</Grid>
+						<Grid item xs={12} sm={12}>
+							<Box>
+								<NecessaryTime necessaryTime={necessaryTime} />
 							</Box>
 						</Grid>
 					</Grid>

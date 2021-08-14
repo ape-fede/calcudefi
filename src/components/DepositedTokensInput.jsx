@@ -6,14 +6,14 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		'& > *': {
 			margin: theme.spacing(1),
-			width: '25ch',
+			width: 200,
 		},
 	},
 }))
 
 export default function DepositedTokensInput(props) {
 	const classes = useStyles()
-	const {starterTokens, setStarterTokens} = props
+	const {starterTokens, setStarterTokens, label} = props
 
 	const handleTokensChange = event => {
 		if (event.target.value) {
@@ -36,7 +36,7 @@ export default function DepositedTokensInput(props) {
 		<form className={classes.root} noValidate autoComplete="off">
 			<TextField
 				id="standard-basic"
-				label="Tokens iniciales"
+				label={label ? label : 'Tokens iniciales'}
 				value={starterTokens.amount}
 				onChange={event => {
 					handleTokensChange(event)

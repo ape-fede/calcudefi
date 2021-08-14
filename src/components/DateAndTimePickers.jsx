@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField'
 
 const useStyles = makeStyles(theme => ({
 	container: {
-		display: 'flex',
+		display: 'inline-flex',
 		flexWrap: 'wrap',
 	},
 	textField: {
@@ -72,7 +72,7 @@ export default function DateAndTimePickers(props) {
 		<form className={classes.container} noValidate>
 			<TextField
 				id="datetime-local"
-				label="Fecha y hora"
+				label={id === 'start' ? 'Tiempo inicial' : 'Tiempo final'}
 				type="datetime-local"
 				defaultValue={defaultValue}
 				className={classes.textField}
