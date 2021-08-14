@@ -17,18 +17,12 @@ export default function TokenAPR(props) {
 
 	const handleAPRChange = event => {
 		let value = event.target.value
-		toString(value)
-		let reg = /[%]|[\s]/g
-		console.log(value)
-		let value2 = value.replace(reg, '')
-		parseInt(value2)
-		console.log(value2)
-		if (value2) {
+		if (value) {
 			setApr(prevState => {
 				if (prevState.TAPR === 0) {
-					return {TAPR: value2.split('0')[1]}
+					return {TAPR: value.split('0')[1]}
 				} else {
-					return {...prevState, TAPR: value2}
+					return {...prevState, TAPR: value}
 				}
 			})
 			event.preventDefault()
@@ -44,7 +38,7 @@ export default function TokenAPR(props) {
 			<TextField
 				id="standard-basic"
 				label="APR"
-				value={`${apr.TAPR}%`}
+				value={apr.TAPR}
 				onChange={event => {
 					handleAPRChange(event)
 				}}

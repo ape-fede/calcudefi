@@ -190,6 +190,7 @@ const DepositedTokenSection = () => {
 							<Box>
 								<DateAndTimePickers
 									id={'final'}
+									s
 									setFinalDate={setFinalDate}
 								/>
 							</Box>

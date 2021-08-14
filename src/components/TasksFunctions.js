@@ -37,6 +37,10 @@ export function calculateFutureTokens(
 	apr,
 ) {
 	// calculate elapsed time in minutes
+	//console.log(starterTokens)
+	//console.log(startDate)
+	//console.log(finalDate)
+	//console.log(apr)
 
 	startDate = new Date(startDate)
 	startDate = startDate.getTime()
@@ -54,6 +58,7 @@ export function calculateFutureTokens(
 
 	let profit = starterTokens.amount * actualApr
 	profit = Math.round(profit * 100) / 100
+	//console.log(profit)
 
 	// calcuale final tokens
 

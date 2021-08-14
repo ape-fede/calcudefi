@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {makeStyles} from '@material-ui/core/styles'
 import TextField from '@material-ui/core/TextField'
 
@@ -17,13 +17,20 @@ const useStyles = makeStyles(theme => ({
 export default function DateAndTimePickers(props) {
 	const classes = useStyles()
 	const {setStartDate, setFinalDate, id} = props
+	const [error, setError] = useState(false)
 
 	const handleTimeChange = event => {
+		let time = event.target.value
+		if (time === '') {
+			setError(true)
+		} else {
+			setError(false)
+		}
 		if (id === 'start') {
-			setStartDate(event.target.value)
+			setStartDate(time)
 		}
 		if (id === 'final') {
-			setFinalDate(event.target.value)
+			setFinalDate(time)
 		}
 	}
 
@@ -69,6 +76,7 @@ export default function DateAndTimePickers(props) {
 				type="datetime-local"
 				defaultValue={defaultValue}
 				className={classes.textField}
+				error={error}
 				onChange={event => {
 					handleTimeChange(event)
 				}}
