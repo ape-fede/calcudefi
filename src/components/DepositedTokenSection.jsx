@@ -40,6 +40,8 @@ const borderStyle = {
 
 const DepositedTokenSection = () => {
 	const [starterTokens, setStarterTokens] = useState(IstarterTokens)
+	const [starterTokensDisabledState, setStarterTokensDisabledState] =
+		useState(false)
 	const [finalTokens, setFinalTokens] = useState(IfinalTokens)
 	const [finalTokensDisabledState, setFinalTokensDisabledState] =
 		useState(false)
@@ -134,6 +136,26 @@ const DepositedTokenSection = () => {
 		apr.TAPR,
 	])
 
+	useEffect(() => {
+		if (taskE.checked === true) {
+			let time = calculateTime(
+				starterTokens.amount,
+				finalTokens.amount,
+				apr.TAPR,
+			)
+			setNecessaryTime(time)
+		}
+	}, [
+		taskA,
+		taskB,
+		taskC,
+		taskD,
+		taskE,
+		starterTokens,
+		finalTokens,
+		apr.TAPR,
+	])
+
 	return (
 		<>
 			<div style={borderStyle}>
@@ -166,10 +188,7 @@ const DepositedTokenSection = () => {
 			</div>
 
 			{/* PASO 2 */}
-			{taskA.checked ||
-			taskB.checked ||
-			taskC.checked ||
-			taskE.checked ? (
+			{taskA.checked || taskC.checked ? (
 				<div style={borderStyle}>
 					<Grid container>
 						<Grid item xs={12}>
@@ -258,6 +277,66 @@ const DepositedTokenSection = () => {
 							<Box>
 								<DepositedTokensInput
 									label={'Tokens depositados'}
+									starterTokens={starterTokens}
+									setStarterTokens={setStarterTokens}
+								/>
+							</Box>
+						</Grid>
+						<Grid item xs={12} sm={6}>
+							<Box>
+								<FinalTokenInput
+									label={'Tokens a juntar'}
+									finalTokens={finalTokens}
+									setFinalTokens={setFinalTokens}
+									finalTokensDisabledState={
+										finalTokensDisabledState
+									}
+								/>
+							</Box>
+						</Grid>
+						<Grid item xs={12} sm={12}>
+							<Box>
+								<TokenAPR
+									apr={apr}
+									setApr={setApr}
+									aprDisabledState={aprDisabledState}
+								/>
+							</Box>
+						</Grid>
+						<Grid item xs={12} sm={12}>
+							<Box>
+								<NecessaryTime necessaryTime={necessaryTime} />
+							</Box>
+						</Grid>
+					</Grid>
+					<Grid container>
+						<Grid item xs={12}>
+							<p>
+								Nota: utilizar el punto como separador decimal
+							</p>
+						</Grid>
+					</Grid>
+				</div>
+			) : null}
+			{taskE.checked ? (
+				<div style={borderStyle}>
+					<Grid container>
+						<Grid item xs={12}>
+							<Box>
+								<p>Paso 2: Complete los campos indicados</p>
+							</Box>
+						</Grid>
+					</Grid>
+					<Grid
+						container
+						direction="row"
+						justifyContent="center"
+						spacing={3}
+					>
+						<Grid item xs={12} sm={6}>
+							<Box>
+								<DepositedTokensInput
+									label={'Tokens a depositar'}
 									starterTokens={starterTokens}
 									setStarterTokens={setStarterTokens}
 								/>

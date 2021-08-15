@@ -66,6 +66,7 @@ export default function DateAndTimePickers(props) {
 		if (id === 'final') {
 			setFinalDate(defaultValue)
 		}
+		// eslint-disable-next-line
 	}, [])
 
 	return (

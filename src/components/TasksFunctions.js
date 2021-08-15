@@ -91,6 +91,11 @@ export function calculateTime(starterTokens, finalTokens, apr) {
 	days = Math.round(days * 100) / 100
 
 	// validate result
+	if (days === Infinity || days === -Infinity) {
+		days = 0
+	} else if (isNaN(days)) {
+		days = 0
+	}
 
 	return days
 }
