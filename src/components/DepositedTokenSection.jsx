@@ -40,8 +40,6 @@ const borderStyle = {
 
 const DepositedTokenSection = () => {
 	const [starterTokens, setStarterTokens] = useState(IstarterTokens)
-	const [starterTokensDisabledState, setStarterTokensDisabledState] =
-		useState(false)
 	const [finalTokens, setFinalTokens] = useState(IfinalTokens)
 	const [finalTokensDisabledState, setFinalTokensDisabledState] =
 		useState(false)
@@ -305,7 +303,10 @@ const DepositedTokenSection = () => {
 						</Grid>
 						<Grid item xs={12} sm={12}>
 							<Box>
-								<NecessaryTime necessaryTime={necessaryTime} />
+								<NecessaryTime
+									necessaryTime={necessaryTime}
+									label={'Tiempo necesario'}
+								/>
 							</Box>
 						</Grid>
 					</Grid>
@@ -336,7 +337,7 @@ const DepositedTokenSection = () => {
 						<Grid item xs={12} sm={6}>
 							<Box>
 								<DepositedTokensInput
-									label={'Tokens a depositar'}
+									label={'Tokens necesarios'}
 									starterTokens={starterTokens}
 									setStarterTokens={setStarterTokens}
 								/>
@@ -354,7 +355,7 @@ const DepositedTokenSection = () => {
 								/>
 							</Box>
 						</Grid>
-						<Grid item xs={12} sm={12}>
+						<Grid item xs={12} sm={6}>
 							<Box>
 								<TokenAPR
 									apr={apr}
@@ -363,9 +364,13 @@ const DepositedTokenSection = () => {
 								/>
 							</Box>
 						</Grid>
-						<Grid item xs={12} sm={12}>
+						<Grid item xs={12} sm={6}>
 							<Box>
-								<NecessaryTime necessaryTime={necessaryTime} />
+								<NecessaryTime
+									necessaryTime={necessaryTime}
+									setNecessaryTime={setNecessaryTime}
+									label={'Tiempo (Días)'}
+								/>
 							</Box>
 						</Grid>
 					</Grid>

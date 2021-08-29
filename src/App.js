@@ -3,6 +3,7 @@ import Header from './components/Header'
 import {Grid, Box, Container} from '@material-ui/core'
 import DepositedTokenSection from './components/DepositedTokenSection'
 import Footer from './components/Footer'
+import TokenInfoWidget from './components/TokenInfoWidget'
 
 const borderStyle = {
 	border: '1px solid',
@@ -46,6 +47,7 @@ function App() {
 						</Box>
 					</Grid>
 				</Grid>
+				<TokenInfoWidget />
 			</Container>
 		</div>
 	)

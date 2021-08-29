@@ -133,7 +133,7 @@ export default function TaskSelector(props) {
 							disabled={taskE.disabled}
 						/>
 					}
-					label="Tokens necesarios para juntar 'x' cantidad de Tokens en un período de tiempo dado (proximamente...)"
+					label="Tokens necesarios para juntar 'x' cantidad de Tokens en un período de tiempo dado (work in progress...)"
 				/>
 			)}
 		</FormGroup>

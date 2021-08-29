@@ -41,7 +41,7 @@ export default function DepositedTokensInput(props) {
 				onChange={event => {
 					handleTokensChange(event)
 				}}
-				disabled={label === 'Tokens a depositar' ? true : false}
+				disabled={label === 'Tokens necesarios' ? true : false}
 			/>
 		</form>
 	)
