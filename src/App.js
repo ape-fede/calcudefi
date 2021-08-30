@@ -16,6 +16,7 @@ function App() {
 	return (
 		<div className="App">
 			<Container maxWidth="sm" style={{textAlign: 'center'}}>
+				<TokenInfoWidget />
 				<Grid
 					container
 					style={{
@@ -29,25 +30,17 @@ function App() {
 							<Header />
 						</Box>
 					</Grid>
-				</Grid>
-				<Grid container>
 					<Grid item xs={12}>
 						<Box>
 							<DepositedTokenSection />
 						</Box>
 					</Grid>
-				</Grid>
-				<Grid
-					container
-					style={{marginTop: '0.2em', marginBottom: '0.2em'}}
-				>
 					<Grid item xs={12}>
 						<Box>
 							<Footer />
 						</Box>
 					</Grid>
 				</Grid>
-				<TokenInfoWidget />
 			</Container>
 		</div>
 	)
