@@ -2,12 +2,16 @@ import React from 'react'
 import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
+import {makeStyles} from '@material-ui/core/styles'
 
-const styles = {
-	fontFamily: 'kanit',
-}
+const useStyles = makeStyles({
+	body: {
+		fontFamily: 'kanit',
+	},
+})
 
 export default function TaskSelector(props) {
+	const classes = useStyles()
 	const {
 		taskA,
 		taskB,
@@ -82,6 +86,7 @@ export default function TaskSelector(props) {
 						/>
 					}
 					label="APR pasado"
+					classes={{label: classes.body}}
 				/>
 			)}
 			{taskB.disabled ? null : (
@@ -97,6 +102,7 @@ export default function TaskSelector(props) {
 						/>
 					}
 					label="Rendimiento en USD (proximamente...)"
+					classes={{label: classes.body}}
 				/>
 			)}
 			{taskC.disabled ? null : (
@@ -111,6 +117,7 @@ export default function TaskSelector(props) {
 						/>
 					}
 					label="Cuántos Tokens tendré"
+					classes={{label: classes.body}}
 				/>
 			)}
 			{taskD.disabled ? null : (
@@ -125,6 +132,7 @@ export default function TaskSelector(props) {
 						/>
 					}
 					label="Cuánto demoraría juntar 'x' cantidad de Tokens"
+					classes={{label: classes.body}}
 				/>
 			)}
 			{taskE.disabled ? null : (
@@ -139,6 +147,7 @@ export default function TaskSelector(props) {
 						/>
 					}
 					label="Tokens necesarios para juntar 'x' cantidad de Tokens en un período de tiempo dado (work in progress...)"
+					classes={{label: classes.body}}
 				/>
 			)}
 		</FormGroup>
