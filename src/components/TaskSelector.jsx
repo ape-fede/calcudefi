@@ -3,6 +3,10 @@ import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 
+const styles = {
+	fontFamily: 'kanit',
+}
+
 export default function TaskSelector(props) {
 	const {
 		taskA,
@@ -82,6 +86,7 @@ export default function TaskSelector(props) {
 			)}
 			{taskB.disabled ? null : (
 				<FormControlLabel
+					style={{fontFamily: 'kanit'}}
 					control={
 						<Checkbox
 							checked={taskB.checkedB}

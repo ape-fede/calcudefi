@@ -12,6 +12,7 @@ const Footer = () => {
 					alignItems: 'center',
 					justifyContent: 'flex-end',
 					paddingRight: '0.4em',
+					paddingTop: 12,
 				}}
 			>
 				<p>Calcu DeFi by Fede Straus.</p>

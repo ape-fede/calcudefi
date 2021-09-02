@@ -32,10 +32,9 @@ const tasksProps = {
 }
 
 const borderStyle = {
-	border: '1px solid',
-	marginTop: '1em',
-	borderRadius: '20px',
-	boxShadow: '10px 5px 10px grey',
+	marginTop: '1.3em',
+	borderRadius: '10px',
+	boxShadow: '10px 11px 10px grey',
 }
 
 const DepositedTokenSection = () => {
@@ -155,7 +154,7 @@ const DepositedTokenSection = () => {
 	])
 
 	return (
-		<>
+		<div style={{fontFamily: 'kanit'}}>
 			<div style={borderStyle}>
 				<Grid container>
 					<Grid item xs={12}>
@@ -383,7 +382,7 @@ const DepositedTokenSection = () => {
 					</Grid>
 				</div>
 			) : null}
-		</>
+		</div>
 	)
 }
 

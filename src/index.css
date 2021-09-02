@@ -1,9 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;600;700&display=swap');
+
+* {
+	font-family: 'kanit';
+}
+
 body {
 	margin: 0;
-	font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+	font-family: 'kanit', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
 		'Droid Sans', 'Helvetica Neue', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+label {
+	font-family: 'kanit';
 }
 
 code {
