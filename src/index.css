@@ -4,6 +4,10 @@
 	font-family: 'kanit';
 }
 
+.MuiTypography-body1 {
+	font-family: 'kanit';
+}
+
 body {
 	margin: 0;
 	font-family: 'kanit', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
