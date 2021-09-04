@@ -1,4 +1,4 @@
-import {Grid, Box} from '@material-ui/core'
+import {Grid} from '@material-ui/core'
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import cake from '../components/media/CAKE.png'
@@ -13,6 +13,7 @@ const styles = {
 	justifyContent: 'space-between',
 	alignItems: 'center',
 	paddingBottom: '0.5em',
+	width: '120px',
 }
 
 const priceInterface = {
@@ -26,7 +27,6 @@ const priceInterface = {
 
 const TokenInfoWidget = () => {
 	const [currentPrices, setCurrentPrices] = useState(priceInterface)
-	const [pos, setPos] = useState(10)
 
 	const getPrices = () => {
 		return axios.get(
@@ -43,10 +43,8 @@ const TokenInfoWidget = () => {
 
 	const handleWindowChange = () => {
 		let width = window.visualViewport.width
-		if (width > 1280) {
-			setPos((width / 2 - 275) / 2 - 75)
+		if (width >= 1030) {
 		} else {
-			setPos(width - 160)
 		}
 	}
 
@@ -60,81 +58,118 @@ const TokenInfoWidget = () => {
 		<Grid
 			container
 			style={{
-				position: 'absolute',
-				left: pos,
-				width: '150px',
+				left: 10,
 				top: 125,
+				display: 'inline-flex',
+				flexDirection: 'column',
+				padding: 10,
+				marginTop: '1em',
+				borderRadius: '10px',
+				boxShadow: '10px 10px 10px grey',
+				alignItems: 'center',
 			}}
 		>
-			<Box
-				style={{
-					display: 'flex',
-					flexDirection: 'column',
-					padding: 10,
-					marginTop: '1em',
-					borderRadius: '10px',
-					boxShadow: '10px 10px 10px grey',
-					width: '100%',
-				}}
-			>
-				<Grid item>
-					<p style={{marginTop: 5}}>Market Status</p>
+			<Grid item>
+				<p style={{marginTop: 5}}>Market Status</p>
+			</Grid>
+			<Grid item>
+				<Grid container alignItems="center">
+					<Grid
+						item
+						xs={6}
+						md={12}
+						style={{display: 'flex', justifyContent: 'center'}}
+					>
+						<div style={styles}>
+							<img src={btc} alt="" style={{width: '1.5em'}} />
+
+							{` $ ${currentPrices['bitcoin'].usd.toLocaleString(
+								'es-ES',
+								{
+									minimumFractionDigits: 2,
+								},
+							)}`}
+						</div>
+					</Grid>
+					<Grid
+						item
+						xs={6}
+						md={12}
+						style={{display: 'flex', justifyContent: 'center'}}
+					>
+						<div style={styles}>
+							<img src={eth} alt="" style={{width: '1.5em'}} />
+							{` $ ${currentPrices['ethereum'].usd.toLocaleString(
+								'es-ES',
+								{
+									minimumFractionDigits: 2,
+								},
+							)}`}
+						</div>
+					</Grid>
+					<Grid
+						item
+						xs={6}
+						md={12}
+						style={{display: 'flex', justifyContent: 'center'}}
+					>
+						<div style={styles}>
+							<img src={bnb} alt="" style={{width: '1.5em'}} />
+							{` $ ${currentPrices[
+								'binancecoin'
+							].usd.toLocaleString('es-ES', {
+								minimumFractionDigits: 2,
+							})}`}
+						</div>
+					</Grid>
+					<Grid
+						item
+						xs={6}
+						md={12}
+						style={{display: 'flex', justifyContent: 'center'}}
+					>
+						<div style={styles}>
+							<img src={cake} alt="" style={{width: '1.5em'}} />
+							{` $ ${currentPrices[
+								'pancakeswap-token'
+							].usd.toLocaleString('es-ES', {
+								minimumFractionDigits: 2,
+							})}`}
+						</div>
+					</Grid>
+					<Grid
+						item
+						xs={6}
+						md={12}
+						style={{display: 'flex', justifyContent: 'center'}}
+					>
+						<div style={styles}>
+							<img src={banana} alt="" style={{width: '1.5em'}} />
+							{` $ ${currentPrices[
+								'apeswap-finance'
+							].usd.toLocaleString('es-ES', {
+								minimumFractionDigits: 2,
+							})}`}
+						</div>
+					</Grid>
+					<Grid
+						item
+						xs={6}
+						md={12}
+						style={{display: 'flex', justifyContent: 'center'}}
+					>
+						<div style={styles}>
+							<img src={brew} alt="" style={{width: '1.5em'}} />
+							{` $ ${currentPrices[
+								'cafeswap-token'
+							].usd.toLocaleString('es-ES', {
+								minimumFractionDigits: 2,
+								maximumFractionDigits: 2,
+							})}`}
+						</div>
+					</Grid>
 				</Grid>
-				<Grid item>
-					<div style={styles}>
-						<img src={btc} alt="" style={{width: '1.5em'}} />
-						{` $ ${currentPrices['bitcoin'].usd.toLocaleString(
-							'es-ES',
-							{
-								minimumFractionDigits: 2,
-							},
-						)}`}
-					</div>
-					<div style={styles}>
-						<img src={eth} alt="" style={{width: '1.5em'}} />
-						{` $ ${currentPrices['ethereum'].usd.toLocaleString(
-							'es-ES',
-							{
-								minimumFractionDigits: 2,
-							},
-						)}`}
-					</div>
-					<div style={styles}>
-						<img src={bnb} alt="" style={{width: '1.5em'}} />
-						{` $ ${currentPrices['binancecoin'].usd.toLocaleString(
-							'es-ES',
-							{
-								minimumFractionDigits: 2,
-							},
-						)}`}
-					</div>
-					<div style={styles}>
-						<img src={cake} alt="" style={{width: '1.5em'}} />
-						{` $ ${currentPrices[
-							'pancakeswap-token'
-						].usd.toLocaleString('es-ES', {
-							minimumFractionDigits: 2,
-						})}`}
-					</div>
-					<div style={styles}>
-						<img src={banana} alt="" style={{width: '1.5em'}} />
-						{` $ ${currentPrices[
-							'apeswap-finance'
-						].usd.toLocaleString('es-ES', {
-							minimumFractionDigits: 2,
-						})}`}
-					</div>
-					<div style={styles}>
-						<img src={brew} alt="" style={{width: '1.5em'}} />
-						{` $ ${currentPrices[
-							'cafeswap-token'
-						].usd.toLocaleString('es-ES', {
-							minimumFractionDigits: 2,
-							maximumFractionDigits: 2,
-						})}`}
-					</div>
-				</Grid>
-			</Box>
+			</Grid>
 		</Grid>
 	)
 }
