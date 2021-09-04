@@ -36,7 +36,6 @@ const TokenInfoWidget = () => {
 
 	useEffect(() => {
 		getPrices().then(res => {
-			console.log(res.data)
 			setCurrentPrices(res.data)
 		})
 	}, [])

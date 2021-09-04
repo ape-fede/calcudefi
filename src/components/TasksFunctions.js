@@ -37,10 +37,6 @@ export function calculateFutureTokens(
 	apr,
 ) {
 	// calculate elapsed time in minutes
-	//console.log(starterTokens)
-	//console.log(startDate)
-	//console.log(finalDate)
-	//console.log(apr)
 
 	startDate = new Date(startDate)
 	startDate = startDate.getTime()
@@ -57,13 +53,11 @@ export function calculateFutureTokens(
 	//calculate profit
 
 	let profit = starterTokens.amount * actualApr
-	profit = Math.round(profit * 100) / 100
-
-	//console.log(profit)
 
 	// calcuale final tokens
 
-	let result = parseInt(starterTokens.amount) + parseInt(profit)
+	let result = parseFloat(starterTokens.amount) + profit
+	result = Math.round(result * 100) / 100
 
 	// validate result
 
@@ -79,15 +73,9 @@ export function calculateFutureTokens(
 /////////////////////////////
 
 export function calculateTime(starterTokens, finalTokens, apr) {
-	console.log(starterTokens)
-	console.log(finalTokens)
-	console.log(apr)
-
 	// calculate time
 	let anualRevenue = starterTokens * (apr / 100)
-	console.log(anualRevenue)
 	let days = (finalTokens * 365) / anualRevenue
-	console.log(days)
 	days = Math.round(days * 100) / 100
 
 	// validate result
