@@ -87,3 +87,11 @@ export function calculateTime(starterTokens, finalTokens, apr) {
 
 	return days
 }
+
+export function calculateNecessaryTokens(finalTokens, apr, necessaryTime) {
+	console.log(`finalTokens: ${finalTokens}`)
+	console.log(`APR: ${apr}`)
+	console.log(`necessaryTime: ${necessaryTime}`)
+
+	return 'un millon(mentira, no funca)'
+}

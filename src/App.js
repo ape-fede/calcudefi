@@ -12,7 +12,7 @@ function App() {
 				container
 				direction="row-reverse"
 				justifyContent="space-around"
-				alignItems="center"
+				alignItems="flex-start"
 				style={{
 					display: 'flex',
 					marginTop: '0.2em',

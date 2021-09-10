@@ -9,6 +9,7 @@ import {
 	calculateAPR,
 	calculateFutureTokens,
 	calculateTime,
+	calculateNecessaryTokens,
 } from './TasksFunctions'
 import NecessaryTime from './NecessaryTime'
 import Footer from './Footer'
@@ -62,6 +63,7 @@ const DepositedTokenSection = () => {
 		setApr(prevState => {
 			return {TAPR: 0}
 		})
+		setNecessaryTime(0)
 	}
 
 	useEffect(() => {
@@ -136,12 +138,14 @@ const DepositedTokenSection = () => {
 
 	useEffect(() => {
 		if (taskE.checked === true) {
-			let time = calculateTime(
-				starterTokens.amount,
+			let necessaryTokens = calculateNecessaryTokens(
 				finalTokens.amount,
 				apr.TAPR,
+				necessaryTime,
 			)
-			setNecessaryTime(time)
+			setStarterTokens(() => {
+				return {amount: necessaryTokens}
+			})
 		}
 	}, [
 		taskA,
@@ -149,9 +153,9 @@ const DepositedTokenSection = () => {
 		taskC,
 		taskD,
 		taskE,
-		starterTokens,
 		finalTokens,
 		apr.TAPR,
+		necessaryTime,
 	])
 
 	return (
@@ -164,7 +168,7 @@ const DepositedTokenSection = () => {
 						style={{display: 'flex', justifyContent: 'center'}}
 					>
 						<p style={{marginBottom: 0}}>
-							Paso 1: ¿Qué desea calcular?
+							Paso 1: ¿Qué deseas calcular?
 						</p>
 					</Grid>
 				</Grid>

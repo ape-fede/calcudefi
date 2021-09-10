@@ -40,19 +40,6 @@ const TokenInfoWidget = () => {
 		})
 	}, [])
 
-	const handleWindowChange = () => {
-		let width = window.visualViewport.width
-		if (width >= 1030) {
-		} else {
-		}
-	}
-
-	window.addEventListener('resize', handleWindowChange)
-
-	useEffect(() => {
-		handleWindowChange()
-	}, [])
-
 	return (
 		<Grid
 			container
