@@ -146,7 +146,7 @@ export default function TaskSelector(props) {
 							disabled={taskE.disabled}
 						/>
 					}
-					label="Tokens necesarios para juntar 'x' cantidad de Tokens en un período de tiempo dado (work in progress...)"
+					label="Tokens necesarios para juntar 'x' cantidad de Tokens en un período de tiempo dado"
 					classes={{label: classes.body}}
 				/>
 			)}

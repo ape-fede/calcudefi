@@ -89,9 +89,14 @@ export function calculateTime(starterTokens, finalTokens, apr) {
 }
 
 export function calculateNecessaryTokens(finalTokens, apr, necessaryTime) {
-	console.log(`finalTokens: ${finalTokens}`)
-	console.log(`APR: ${apr}`)
-	console.log(`necessaryTime: ${necessaryTime}`)
+	let necessaryTokens = (100 / ((apr / 365) * necessaryTime)) * finalTokens
 
-	return 'un millon(mentira, no funca)'
+	// validate result
+	if (necessaryTokens === Infinity || necessaryTokens === -Infinity) {
+		necessaryTokens = 0
+	} else if (isNaN(necessaryTokens)) {
+		necessaryTokens = 0
+	}
+
+	return necessaryTokens
 }
