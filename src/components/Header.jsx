@@ -1,6 +1,19 @@
 import React from 'react'
+import Button from '@material-ui/core/Button'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faLightbulb, faMoon} from '@fortawesome/free-solid-svg-icons'
 
-const Header = () => {
+const Header = props => {
+	const {theme, setTheme} = props
+
+	const changeTheme = () => {
+		if (theme === 'light') {
+			setTheme('dark')
+		} else {
+			setTheme('light')
+		}
+	}
+
 	return (
 		<div
 			style={{
@@ -17,6 +30,27 @@ const Header = () => {
 			<p style={{margin: 0, display: 'flex', alignItems: 'flex-end'}}>
 				(Beta)
 			</p>
+			<Button
+				style={{
+					padding: '25px 0px',
+					position: 'absolute',
+					left: '80vw',
+				}}
+			>
+				{theme === 'light' ? (
+					<FontAwesomeIcon
+						icon={faMoon}
+						style={{fontSize: '2em'}}
+						onClick={changeTheme}
+					/>
+				) : (
+					<FontAwesomeIcon
+						icon={faLightbulb}
+						style={{fontSize: '2em'}}
+						onClick={changeTheme}
+					/>
+				)}
+			</Button>
 		</div>
 	)
 }
