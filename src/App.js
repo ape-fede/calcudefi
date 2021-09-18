@@ -16,7 +16,7 @@ function App() {
 	})
 	return (
 		<ThemeProvider theme={darkTheme}>
-			<Paper style={{height: '100vh'}}>
+			<Paper style={{minHeight: '100vh'}}>
 				<Header theme={theme} setTheme={setTheme} />
 				<Grid
 					container
