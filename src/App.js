@@ -34,7 +34,7 @@ function App() {
 						<TokenInfoWidget />
 					</Grid>
 					<Grid item xs={11} md={6}>
-						<DepositedTokenSection />
+						<DepositedTokenSection theme={theme} />
 					</Grid>
 					<Hidden smDown>
 						<Grid item xs={11} md={2} xl={1}>

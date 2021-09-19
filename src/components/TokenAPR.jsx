@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		'& > *': {
 			margin: theme.spacing(1),
-			width: 200,
+			width: 220,
 		},
 	},
 }))
@@ -43,6 +43,7 @@ export default function TokenAPR(props) {
 					handleAPRChange(event)
 				}}
 				disabled={aprDisabledState}
+				variant="outlined"
 			/>
 		</form>
 	)

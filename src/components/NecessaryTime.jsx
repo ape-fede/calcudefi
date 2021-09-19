@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		'& > *': {
 			margin: theme.spacing(1),
-			width: 200,
+			width: 220,
 		},
 	},
 }))
@@ -47,6 +47,7 @@ export default function NecessaryTime(props) {
 						? event => handleTimeChange(event)
 						: null
 				}
+				variant="outlined"
 			/>
 		</form>
 	)

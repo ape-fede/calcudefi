@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '@material-ui/core/Button'
+import {Button, Box} from '@material-ui/core'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faLightbulb, faMoon} from '@fortawesome/free-solid-svg-icons'
 
@@ -15,13 +15,13 @@ const Header = props => {
 	}
 
 	return (
-		<div
+		<Box
 			style={{
 				textAlign: 'center',
-				background: '#CDD8E0',
 				padding: 20,
 				display: 'flex',
 				justifyContent: 'center',
+				background: theme === 'light' ? '#CDD8E0' : '#303030',
 			}}
 		>
 			<h1 style={{margin: 0, fontWeight: 700, fontSize: 50}}>
@@ -36,22 +36,18 @@ const Header = props => {
 					position: 'absolute',
 					left: '80vw',
 				}}
+				onClick={changeTheme}
 			>
 				{theme === 'light' ? (
-					<FontAwesomeIcon
-						icon={faMoon}
-						style={{fontSize: '2em'}}
-						onClick={changeTheme}
-					/>
+					<FontAwesomeIcon icon={faMoon} style={{fontSize: '2em'}} />
 				) : (
 					<FontAwesomeIcon
 						icon={faLightbulb}
 						style={{fontSize: '2em'}}
-						onClick={changeTheme}
 					/>
 				)}
 			</Button>
-		</div>
+		</Box>
 	)
 }
 

@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		'& > *': {
 			margin: theme.spacing(1),
-			width: 200,
+			width: 220,
 		},
 	},
 }))
@@ -42,6 +42,7 @@ export default function FinalTokenInput(props) {
 					handleTokensChange(event)
 				}}
 				disabled={finalTokensDisabledState}
+				variant="outlined"
 			/>
 		</form>
 	)

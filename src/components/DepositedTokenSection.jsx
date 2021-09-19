@@ -39,7 +39,9 @@ const borderStyle = {
 	boxShadow: '10px 11px 10px grey',
 }
 
-const DepositedTokenSection = () => {
+const DepositedTokenSection = props => {
+	const {theme} = props
+
 	const [starterTokens, setStarterTokens] = useState(IstarterTokens)
 	const [finalTokens, setFinalTokens] = useState(IfinalTokens)
 	const [finalTokensDisabledState, setFinalTokensDisabledState] =
@@ -449,7 +451,7 @@ const DepositedTokenSection = () => {
 				</div>
 			) : null}
 			<Grid item xs={12}>
-				<Footer />
+				<Footer theme={theme} />
 			</Grid>
 		</div>
 	)

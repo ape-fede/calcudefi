@@ -6,7 +6,7 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		'& > *': {
 			margin: theme.spacing(1),
-			width: 200,
+			width: 220,
 		},
 	},
 }))
@@ -42,6 +42,8 @@ export default function DepositedTokensInput(props) {
 					handleTokensChange(event)
 				}}
 				disabled={label === 'Tokens necesarios' ? true : false}
+				variant="outlined"
+				autoFocus={true}
 			/>
 		</form>
 	)
