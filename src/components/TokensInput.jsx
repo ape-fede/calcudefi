@@ -11,13 +11,13 @@ const useStyles = makeStyles(theme => ({
 	},
 }))
 
-export default function DepositedTokensInput(props) {
+export default function TokensInput(props) {
 	const classes = useStyles()
-	const {starterTokens, setStarterTokens, label} = props
+	const {tokens, setTokens, label, disabledState, autoFocus} = props
 
 	const handleTokensChange = event => {
 		if (event.target.value) {
-			setStarterTokens(prevState => {
+			setTokens(prevState => {
 				if (prevState.amount === 0) {
 					return {amount: event.target.value.split('0')[1]}
 				} else {
@@ -26,7 +26,7 @@ export default function DepositedTokensInput(props) {
 			})
 			event.preventDefault()
 		} else {
-			setStarterTokens(() => {
+			setTokens(() => {
 				return {amount: 0}
 			})
 		}
@@ -36,14 +36,14 @@ export default function DepositedTokensInput(props) {
 		<form className={classes.root} noValidate autoComplete="off">
 			<TextField
 				id="standard-basic"
-				label={label ? label : 'Tokens iniciales'}
-				value={starterTokens.amount}
+				label={label}
+				value={tokens.amount}
 				onChange={event => {
 					handleTokensChange(event)
 				}}
-				disabled={label === 'Tokens necesarios' ? true : false}
+				disabled={disabledState}
 				variant="outlined"
-				autoFocus={true}
+				autoFocus={autoFocus}
 			/>
 		</form>
 	)

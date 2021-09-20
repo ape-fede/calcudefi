@@ -24,6 +24,7 @@ export default function TaskSelector(props) {
 		setTaskD,
 		setTaskE,
 		resetValues,
+		theme,
 	} = props
 
 	const handleChange = event => {
@@ -81,7 +82,7 @@ export default function TaskSelector(props) {
 							checked={taskA.checkedA}
 							onChange={handleChange}
 							name="A"
-							color="primary"
+							color={theme === 'light' ? 'primary' : 'common'}
 							disabled={taskA.disabled}
 						/>
 					}
@@ -97,7 +98,7 @@ export default function TaskSelector(props) {
 							checked={taskB.checkedB}
 							onChange={handleChange}
 							name="B"
-							color="primary"
+							color={theme === 'light' ? 'primary' : 'common'}
 							disabled={taskB.disabled}
 						/>
 					}
@@ -112,7 +113,7 @@ export default function TaskSelector(props) {
 							checked={taskC.checkedC}
 							onChange={handleChange}
 							name="C"
-							color="primary"
+							color={theme === 'light' ? 'primary' : 'common'}
 							disabled={taskC.disabled}
 						/>
 					}
@@ -127,7 +128,7 @@ export default function TaskSelector(props) {
 							checked={taskD.checkedD}
 							onChange={handleChange}
 							name="D"
-							color="primary"
+							color={theme === 'light' ? 'primary' : 'common'}
 							disabled={taskD.disabled}
 						/>
 					}
@@ -142,7 +143,7 @@ export default function TaskSelector(props) {
 							checked={taskE.checkedE}
 							onChange={handleChange}
 							name="E"
-							color="primary"
+							color={theme === 'light' ? 'primary' : 'common'}
 							disabled={taskE.disabled}
 						/>
 					}

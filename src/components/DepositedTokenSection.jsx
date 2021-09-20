@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Grid, Box} from '@material-ui/core'
 import DateAndTimePickers from './DateAndTimePickers'
-import DepositedTokensInput from './DepositedTokensInput'
-import FinalTokenInput from './FinalTokenInput'
+import TokensInput from './TokensInput'
 import TaskSelector from './TaskSelector'
 import TokenAPR from './TokenAPR'
 import {
@@ -189,6 +188,7 @@ const DepositedTokenSection = props => {
 								setTaskD={setTaskD}
 								setTaskE={setTaskE}
 								resetValues={resetValues}
+								theme={theme}
 							/>
 						</Box>
 					</Grid>
@@ -219,9 +219,12 @@ const DepositedTokenSection = props => {
 							sm={6}
 							style={{display: 'flex', justifyContent: 'center'}}
 						>
-							<DepositedTokensInput
-								starterTokens={starterTokens}
-								setStarterTokens={setStarterTokens}
+							<TokensInput
+								tokens={starterTokens}
+								setTokens={setStarterTokens}
+								label={'Tokens Iniciales'}
+								disabledState={false}
+								autoFocus={true}
 							/>
 						</Grid>
 						<Grid
@@ -241,12 +244,12 @@ const DepositedTokenSection = props => {
 							sm={6}
 							style={{display: 'flex', justifyContent: 'center'}}
 						>
-							<FinalTokenInput
-								finalTokens={finalTokens}
-								setFinalTokens={setFinalTokens}
-								finalTokensDisabledState={
-									finalTokensDisabledState
-								}
+							<TokensInput
+								tokens={finalTokens}
+								setTokens={setFinalTokens}
+								label={'Tokens Finales'}
+								disabledState={finalTokensDisabledState}
+								autoFocus={false}
 							/>
 						</Grid>
 						<Grid
@@ -310,10 +313,12 @@ const DepositedTokenSection = props => {
 							sm={6}
 							style={{display: 'flex', justifyContent: 'center'}}
 						>
-							<DepositedTokensInput
+							<TokensInput
+								tokens={starterTokens}
+								setTokens={setStarterTokens}
 								label={'Tokens depositados'}
-								starterTokens={starterTokens}
-								setStarterTokens={setStarterTokens}
+								disabledState={false}
+								autoFocus={true}
 							/>
 						</Grid>
 						<Grid
@@ -322,13 +327,12 @@ const DepositedTokenSection = props => {
 							sm={6}
 							style={{display: 'flex', justifyContent: 'center'}}
 						>
-							<FinalTokenInput
+							<TokensInput
+								tokens={finalTokens}
+								setTokens={setFinalTokens}
 								label={'Tokens a juntar'}
-								finalTokens={finalTokens}
-								setFinalTokens={setFinalTokens}
-								finalTokensDisabledState={
-									finalTokensDisabledState
-								}
+								disabledState={finalTokensDisabledState}
+								autoFocus={false}
 							/>
 						</Grid>
 						<Grid
@@ -391,10 +395,11 @@ const DepositedTokenSection = props => {
 							sm={6}
 							style={{display: 'flex', justifyContent: 'center'}}
 						>
-							<DepositedTokensInput
+							<TokensInput
+								tokens={starterTokens}
+								setTokens={setStarterTokens}
 								label={'Tokens necesarios'}
-								starterTokens={starterTokens}
-								setStarterTokens={setStarterTokens}
+								disabledState={true}
 							/>
 						</Grid>
 						<Grid
@@ -403,13 +408,12 @@ const DepositedTokenSection = props => {
 							sm={6}
 							style={{display: 'flex', justifyContent: 'center'}}
 						>
-							<FinalTokenInput
+							<TokensInput
+								tokens={finalTokens}
+								setTokens={setFinalTokens}
 								label={'Tokens a juntar'}
-								finalTokens={finalTokens}
-								setFinalTokens={setFinalTokens}
-								finalTokensDisabledState={
-									finalTokensDisabledState
-								}
+								disabledState={finalTokensDisabledState}
+								autoFocus={true}
 							/>
 						</Grid>
 						<Grid
