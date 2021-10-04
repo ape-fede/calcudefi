@@ -1,25 +1,27 @@
 import React from 'react';
 import {Grid} from '@material-ui/core';
-import TokensInput from '../TokensInput';
+import TokenCombo from './TokenCombo';
 import DateAndTimePickers from '../DateAndTimePickers';
-import TokenAPR from '../TokenAPR';
+import {makeStyles} from '@material-ui/core';
+import {style} from './styles';
+const useStyles = makeStyles(style);
 
 export const TaskA = props => {
   const {
-    borderStyle,
     starterTokens,
     setStarterTokens,
     setStartDate,
     finalTokens,
     setFinalTokens,
-    finalTokensDisabledState,
     setFinalDate,
     apr,
-    setApr,
+    theme,
   } = props;
 
+  const classes = useStyles();
+
   return (
-    <div style={borderStyle}>
+    <div className={classes.borders}>
       <Grid container>
         <Grid item xs={12} style={{display: 'flex', justifyContent: 'center'}}>
           <p>Paso 2: Complete los campos indicados</p>
@@ -27,36 +29,36 @@ export const TaskA = props => {
       </Grid>
       <Grid container direction='row' justifyContent='center' spacing={3}>
         <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
-          <TokensInput
+          <TokenCombo
             tokens={starterTokens}
             setTokens={setStarterTokens}
-            label={'Tokens Iniciales'}
-            disabledState={false}
+            label={'Tokens depositados'}
             autoFocus={true}
+            theme={theme}
           />
         </Grid>
         <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
           <DateAndTimePickers id={'start'} setStartDate={setStartDate} />
         </Grid>
         <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
-          <TokensInput
+          <TokenCombo
             tokens={finalTokens}
             setTokens={setFinalTokens}
             label={'Tokens Finales'}
-            disabledState={finalTokensDisabledState}
             autoFocus={false}
+            theme={theme}
           />
         </Grid>
         <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
           <DateAndTimePickers id={'final'} setFinalDate={setFinalDate} />
         </Grid>
-        <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
-          <TokenAPR apr={apr} setApr={setApr} aprDisabledState={true} />
-        </Grid>
-      </Grid>
-      <Grid container>
-        <Grid item xs={12} style={{display: 'flex', justifyContent: 'center'}}>
-          <p>Nota: utilizar el punto como separador decimal</p>
+        <Grid
+          item
+          xs={12}
+          style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}
+          direction={'column'}>
+          <p style={{fontFamily: 'mandhor', fontSize: '50px', margin: 0}}>APR</p>
+          <p style={{fontFamily: 'mandhor', fontSize: '40px', margin: 0}}>{apr.TAPR}%</p>
         </Grid>
       </Grid>
     </div>

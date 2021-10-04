@@ -1,0 +1,19 @@
+@media (min-width: 960px) {
+  .MuiGrid-grid-md-2 {
+    position: absolute;
+    left: 0;
+  }
+}
+
+.MuiOutlinedInput-notchedOutline,
+.MuiSelect-outlined.MuiSelect-outlined,
+.MuiOutlinedInput-root,
+.MuiSelect-select:focus {
+  border: none !important;
+  border-color: unset !important;
+  outline: unset !important;
+}
+
+.MuiSelect-select:focus {
+  background-color: unset !important;
+}

@@ -1,26 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200;400;600;700&display=swap');
 
 * {
-	font-family: 'kanit';
+  font-family: 'kanit';
 }
 
 .MuiTypography-body1 {
-	font-family: 'kanit';
+  font-family: 'kanit';
 }
 
 body {
-	margin: 0;
-	font-family: 'kanit', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-		'Droid Sans', 'Helvetica Neue', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: 'kanit', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 label {
-	font-family: 'kanit';
+  font-family: 'kanit';
 }
 
 code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@font-face {
+  font-family: 'mandhor';
+  src: local('mandhor'), url(./components/fonts/mandhor.otf) format('truetype');
 }
