@@ -58,7 +58,7 @@ const TokenSelector = () => {
 
   return (
     <Grid container direction={'row'} spacing={3}>
-      <Grid item xs={6} style={{display: 'flex', justifyContent: 'center', padding: 12}}>
+      <Grid item xs={12} md={6} style={{display: 'flex', justifyContent: 'center', padding: 12}}>
         <FormControl className={classes.container}>
           <Select
             value={currentPrices.selectedToken}
