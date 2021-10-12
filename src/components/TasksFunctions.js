@@ -14,7 +14,7 @@ export function calculateAPR(starterTokens, finalTokens, startDate, finalDate) {
 
   // calculate revenue
 
-  let revenue = (finalTokens.amount * 100) / starterTokens.amount - 100;
+  let revenue = (finalTokens * 100) / starterTokens - 100;
 
   // calcuale apr
 
@@ -51,11 +51,11 @@ export function calculateFutureTokens(starterTokens, startDate, finalDate, apr) 
 
   //calculate profit
 
-  let profit = starterTokens.amount * actualApr;
+  let profit = starterTokens * actualApr;
 
   // calcuale final tokens
 
-  let result = parseFloat(starterTokens.amount) + profit;
+  let result = parseFloat(starterTokens) + profit;
   result = Math.round(result * 100) / 100;
 
   // validate result

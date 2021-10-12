@@ -1,9 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {FormControl, Select, MenuItem, Grid} from '@material-ui/core';
-import PricesContext from './components/context/PricesContext';
+import PricesContext from './context/PricesContext';
 import {makeStyles} from '@material-ui/core/styles';
-import {style} from './components/InputsSection/styles';
-import '../src/position.css';
+import {style} from './InputsSection/styles';
+import '../position.css';
 
 const useStyles = makeStyles(style);
 
@@ -57,15 +57,14 @@ const TokenSelector = () => {
   const clean = () => setShowAddInput(false);
 
   return (
-    <Grid container direction={'row'} spacing={3}>
-      <Grid item xs={12} md={6} style={{display: 'flex', justifyContent: 'center', padding: 12}}>
+    <Grid container direction={'row'} style={{width: 240}}>
+      <Grid item xs={12} style={{display: 'flex', justifyContent: 'center', padding: 12}}>
         <FormControl className={classes.container}>
           <Select
             value={currentPrices.selectedToken}
             onChange={handleChange}
             autoWidth
-            variant={'outlined'}
-            style={{width: 230}}>
+            variant={'outlined'}>
             <MenuItem value='Token'>
               <em>None</em>
             </MenuItem>
@@ -94,7 +93,7 @@ const TokenSelector = () => {
         </FormControl>
       </Grid>
       {showAddInput ? (
-        <Grid item xs={3} style={{display: 'flex', alignItems: 'center'}}>
+        <Grid xs={12} style={{display: 'flex', justifyContent: 'center'}}>
           Próximamente...
         </Grid>
       ) : null}

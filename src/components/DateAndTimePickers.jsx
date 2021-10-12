@@ -65,10 +65,10 @@ export default function DateAndTimePickers(props) {
     <Grid container direction='row' style={{width: 240}}>
       <Grid item xs={12}>
         <p style={{margin: 0, padding: '0px 10px'}}>
-          {id === 'start' ? 'Tiempo inicial' : 'Tiempo final'}
+          {id === 'start' ? 'Fecha inicial' : 'Fecha final'}
         </p>
       </Grid>
-      <Grid container>
+      <Grid container className={classes.container}>
         <form noValidate>
           <TextField
             id='datetime-local'

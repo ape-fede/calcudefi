@@ -32,7 +32,7 @@ export const TaskE = props => {
         </Grid>
       </Grid>
       <Grid container direction='row' justifyContent='center' spacing={3}>
-        <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} sm={6} justifyContent='center'>
           <TokenCombo
             tokens={finalTokens}
             setTokens={setFinalTokens}
@@ -41,10 +41,10 @@ export const TaskE = props => {
             theme={theme}
           />
         </Grid>
-        <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} sm={6} justifyContent='center'>
           <TokenAPR apr={apr} setApr={setApr} aprDisabledState={false} />
         </Grid>
-        <Grid item xs={12} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} sm={6} justifyContent='center'>
           <NecessaryTime
             necessaryTime={necessaryTime}
             setNecessaryTime={setNecessaryTime}
@@ -58,14 +58,14 @@ export const TaskE = props => {
           style={{display: 'flex', justifyContent: 'center'}}
           direction={'column'}
           alignItems={'center'}>
-          <p style={{fontFamily: 'mandhor', fontSize: '45px', margin: 0}}>tokens necesarios</p>
-          <p style={{fontFamily: 'mandhor', fontSize: '25px', margin: '10px 0px'}}>
-            {starterTokens.amount
-              ? round(starterTokens.amount).toLocaleString('es-ES', {
+          <p className={classes.resultTitle}>TOKENS NECESARIOS</p>
+          <p className={classes.resultSub}>
+            {starterTokens
+              ? round(starterTokens).toLocaleString('es-ES', {
                   minimumFractionDigits: 2,
                 })
               : '0'}{' '}
-            {currentPrices.selectedToken}
+            {currentPrices.selectedToken}s
           </p>
         </Grid>
       </Grid>

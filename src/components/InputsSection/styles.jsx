@@ -17,6 +17,7 @@ export const style = {
     textAlign: 'right',
   },
   container: {
+    width: '100%',
     borderRadius: '10px !important',
     backgroundColor: 'rgb(134 186 223 / 8%)',
     boxShadow: 'rgb(134 186 223 / 60%) 0px 2px 2px -1px inset',
@@ -29,9 +30,6 @@ export const style = {
     minWidth: 'unset',
   },
   datePicker: {
-    borderRadius: '10px !important',
-    backgroundColor: 'rgb(134 186 223 / 8%)',
-    boxShadow: 'rgb(134 186 223 / 60%) 0px 2px 2px -1px inset',
     border: 0,
     outline: 'unset',
     '&:focus': {
@@ -46,5 +44,30 @@ export const style = {
   },
   removeBorder: {
     border: 0,
+  },
+  resultTitle: {
+    fontSize: '35px',
+    fontWeight: 800,
+    margin: 0,
+    lineHeight: 1,
+    textAlign: 'center',
+  },
+  resultSub: {
+    fontSize: '25px',
+    fontWeight: 800,
+    margin: 0,
+    lineHeight: 1,
+    textAlign: 'center',
+  },
+  resultUsd: {
+    fontSize: '15px',
+    fontWeight: 500,
+    margin: 0,
+    lineHeight: 1,
+    textAlign: 'center',
+  },
+  centered: {
+    justifyContent: 'center',
+    textAlign: 'center',
   },
 };

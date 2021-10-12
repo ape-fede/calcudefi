@@ -19,14 +19,12 @@ export default function TokenCombo(props) {
   const {currentPrices} = useContext(PricesContext);
 
   useEffect(() => {
-    if (mainToken === true) setUsd(round(tokens.amount * currentPrices.selectedPrice));
-  }, [tokens.amount, mainToken, currentPrices.selectedPrice]);
+    if (mainToken === true) setUsd(round(tokens * currentPrices.selectedPrice));
+  }, [tokens, mainToken, currentPrices.selectedPrice]);
 
   useEffect(() => {
     if (mainToken === false) {
-      setTokens(() => {
-        return {amount: round(usd / currentPrices.selectedPrice)};
-      });
+      setTokens(round(usd / currentPrices.selectedPrice));
     }
     // eslint-disable-next-line
   }, [usd, mainToken, currentPrices.selectedPrice]);
@@ -35,17 +33,15 @@ export default function TokenCombo(props) {
     if (mainToken === true) {
       if (event.target.value) {
         setTokens(prevState => {
-          if (prevState.amount === 0) {
-            return {amount: event.target.value.split('0')[1]};
+          if (prevState === 0) {
+            return event.target.value.split('0')[1];
           } else {
-            return {...prevState, amount: event.target.value};
+            return event.target.value;
           }
         });
         event.preventDefault();
       } else {
-        setTokens(() => {
-          return {amount: undefined};
-        });
+        setTokens(undefined);
       }
     } else {
       if (event.target.value) {
@@ -81,7 +77,7 @@ export default function TokenCombo(props) {
               <Grid item>
                 <form noValidate autoComplete='off'>
                   <NumberFormat
-                    value={mainToken ? tokens.amount : usd}
+                    value={mainToken ? tokens : usd}
                     onChange={event => {
                       handleTokensChange(event);
                     }}
@@ -113,12 +109,12 @@ export default function TokenCombo(props) {
                   textAlign: 'right',
                   marginRight: 5,
                 }}>
-                {tokens.amount
+                {tokens
                   ? mainToken
                     ? usd.toLocaleString('es-ES', {
                         minimumFractionDigits: 2,
                       })
-                    : tokens.amount
+                    : tokens
                   : '0.00'}{' '}
                 {mainToken ? 'USD' : currentPrices.selectedToken}
               </p>

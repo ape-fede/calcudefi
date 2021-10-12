@@ -33,25 +33,12 @@ export default function TaskSelector(props) {
               color={theme === 'light' ? 'primary' : 'common'}
             />
           }
-          label='APR pasado'
+          label='APR'
           classes={{label: classes.body}}
         />
       ) : null}
-      {!task || task === 'B' ? (
-        <FormControlLabel
-          style={{fontFamily: 'kanit'}}
-          control={
-            <Checkbox
-              checked={task === 'B'}
-              onChange={handleChange}
-              name='B'
-              color={theme === 'light' ? 'primary' : 'common'}
-              disabled={true}
-            />
-          }
-          label='Rendimiento en USD (proximamente...)'
-          classes={{label: classes.body}}
-        />
+      {task === 'A' ? (
+        <p>Te permite calcular cuál ha sido el rendimiento de los tokens depositados en un Pool.</p>
       ) : null}
       {!task || task === 'C' ? (
         <FormControlLabel
@@ -63,9 +50,14 @@ export default function TaskSelector(props) {
               color={theme === 'light' ? 'primary' : 'common'}
             />
           }
-          label='Cuántos Tokens tendré'
+          label='Rendimiento'
           classes={{label: classes.body}}
         />
+      ) : null}
+      {task === 'C' ? (
+        <p>
+          Te permite calcular cuál sería el rendimiento de los tokens que se depositen en un Pool.
+        </p>
       ) : null}
       {!task || task === 'D' ? (
         <FormControlLabel
@@ -77,9 +69,12 @@ export default function TaskSelector(props) {
               color={theme === 'light' ? 'primary' : 'common'}
             />
           }
-          label="Cuánto demoraría juntar 'x' cantidad de Tokens"
+          label='Tiempo necesario'
           classes={{label: classes.body}}
         />
+      ) : null}
+      {task === 'D' ? (
+        <p>Te permite calcular cuánto tiempo demoraría juntar una cierta cantidad de Tokens.</p>
       ) : null}
       {!task || task === 'E' ? (
         <FormControlLabel
@@ -91,9 +86,15 @@ export default function TaskSelector(props) {
               color={theme === 'light' ? 'primary' : 'common'}
             />
           }
-          label="Tokens necesarios para juntar 'x' cantidad de Tokens en un período de tiempo dado"
+          label='Tokens necesarios'
           classes={{label: classes.body}}
         />
+      ) : null}
+      {task === 'E' ? (
+        <p>
+          Te permite calcular cuántos Tokens serían necesarios para juntar una cierta cantidad de
+          Tokens en un determinado período de tiempo.
+        </p>
       ) : null}
     </FormGroup>
   );

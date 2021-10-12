@@ -23,20 +23,15 @@ export const TaskC = props => {
   const classes = useStyles();
   const {currentPrices} = useContext(PricesContext);
 
-  useEffect(() => {
-    console.log(currentPrices);
-    // eslint-disable-next-line
-  }, []);
-
   return (
     <div className={classes.borders}>
       <Grid container>
-        <Grid item xs={12} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} className={classes.centered}>
           <p>Paso 2: Complete los campos indicados</p>
         </Grid>
       </Grid>
       <Grid container direction='row' justifyContent='center' spacing={3}>
-        <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} sm={6} justifyContent={'center'}>
           <TokenCombo
             tokens={starterTokens}
             setTokens={setStarterTokens}
@@ -45,44 +40,43 @@ export const TaskC = props => {
             theme={theme}
           />
         </Grid>
-        <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} sm={6} justifyContent={'center'}>
           <DateAndTimePickers id={'start'} setStartDate={setStartDate} />
         </Grid>
-        <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} sm={6} justifyContent={'center'}>
           <TokenAPR apr={apr} setApr={setApr} aprDisabledState={false} />
         </Grid>
-        <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} sm={6} justifyContent={'center'}>
           <DateAndTimePickers id={'final'} setFinalDate={setFinalDate} />
         </Grid>
         <Grid
+          container
           item
           xs={12}
-          style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}
-          direction={'row'}>
-          <Grid item xs={6}>
-            <p style={{fontFamily: 'mandhor', fontSize: '45px', margin: 0}}>total</p>
-            <p style={{fontFamily: 'mandhor', fontSize: '25px', margin: '10px 0px'}}>
-              {finalTokens.amount} {currentPrices.selectedToken}s
+          className={classes.centered}
+          direction={'row'}
+          style={{marginBottom: 15, padding: 0}}>
+          <Grid container item xs={6} className={classes.centered} direction='column'>
+            <p className={classes.resultTitle}>TOTAL</p>
+            <p className={classes.resultSub}>
+              {finalTokens} {currentPrices.selectedToken}s
             </p>
-            <p style={{fontFamily: 'mandhor', fontSize: '15px', margin: '10px 0px'}}>
-              {finalTokens.amount
-                ? `${round(finalTokens.amount * currentPrices.selectedPrice)} usd`
-                : '0 USD'}
+            <p className={classes.resultUsd}>
+              ({finalTokens ? `${round(finalTokens * currentPrices.selectedPrice)} usd` : '0 USD'})
             </p>
           </Grid>
-          <Grid item xs={6}>
-            <p style={{fontFamily: 'mandhor', fontSize: '45px', margin: 0}}>profit</p>
-            <p style={{fontFamily: 'mandhor', fontSize: '20px', margin: '10px 0px'}}>
-              {finalTokens.amount && starterTokens.amount
-                ? round(finalTokens.amount - starterTokens.amount)
-                : 0}{' '}
+          <Grid container item xs={6} className={classes.centered} direction='column'>
+            <p className={classes.resultTitle}>PROFIT</p>
+            <p className={classes.resultSub}>
+              {finalTokens && starterTokens ? round(finalTokens - starterTokens) : 0}{' '}
               {currentPrices.selectedToken}s
             </p>
-            <p style={{fontFamily: 'mandhor', fontSize: '15px', margin: '10px 0px'}}>
-              {finalTokens.amount && starterTokens.amount
-                ? round((finalTokens.amount - starterTokens.amount) * currentPrices.selectedPrice)
+            <p className={classes.resultUsd}>
+              (
+              {finalTokens && starterTokens
+                ? round((finalTokens - starterTokens) * currentPrices.selectedPrice)
                 : 0}{' '}
-              usd
+              USD)
             </p>
           </Grid>
         </Grid>

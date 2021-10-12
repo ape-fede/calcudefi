@@ -8,7 +8,7 @@ const useStyles = makeStyles(style);
 
 export default function TokenAPR(props) {
   const classes = useStyles();
-  const {apr, setApr, aprDisabledState} = props;
+  const {apr, setApr} = props;
 
   const handleAPRChange = event => {
     let value = event.target.value;
@@ -33,20 +33,22 @@ export default function TokenAPR(props) {
       <Grid item xs={12}>
         <p style={{margin: 0, padding: '0px 10px'}}>APR</p>
       </Grid>
-      <form noValidate autoComplete='off' style={{width: '100%'}}>
-        <TextField
-          id='standard-basic'
-          value={apr.TAPR}
-          onChange={event => {
-            handleAPRChange(event);
-          }}
-          placeholder={'0'}
-          variant='outlined'
-          InputProps={{classes: {root: classes.datePicker, notchedOutline: classes.removeBorder}}}
-          inputProps={{style: {textAlign: 'right'}}}
-          style={{width: '100%'}}
-        />
-      </form>
+      <Grid container className={classes.container}>
+        <form noValidate autoComplete='off' style={{width: '100%'}}>
+          <TextField
+            id='standard-basic'
+            value={apr.TAPR}
+            onChange={event => {
+              handleAPRChange(event);
+            }}
+            placeholder={'0 %'}
+            variant='outlined'
+            InputProps={{classes: {root: classes.datePicker, notchedOutline: classes.removeBorder}}}
+            inputProps={{style: {textAlign: 'right'}}}
+            style={{width: '100%'}}
+          />
+        </form>
+      </Grid>
     </Grid>
   );
 }

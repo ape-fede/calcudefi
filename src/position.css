@@ -1,7 +1,7 @@
 @media (min-width: 960px) {
   .MuiGrid-grid-md-2 {
     position: absolute;
-    left: 0;
+    left: 20px;
   }
 }
 

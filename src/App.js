@@ -21,11 +21,11 @@ function App() {
       <PricesProvider>
         <Paper style={{minHeight: '100vh'}}>
           <Header theme={theme} setTheme={setTheme} />
-          <Grid container direction='row' justifyContent='center' alignItems='flex-start' xs={12}>
-            <Grid item xs={11} md={2} xl={1}>
+          <Grid container direction='row' justifyContent='center' alignItems='flex-start'>
+            <Grid container item xs={11} md={2} xl={1} justifyContent={'center'}>
               <TokenInfoWidget />
             </Grid>
-            <Grid item xs={11} md={7}>
+            <Grid container item xs={11} md={7} justifyContent={'center'}>
               <Main theme={theme} />
             </Grid>
           </Grid>

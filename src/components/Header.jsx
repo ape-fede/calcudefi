@@ -28,7 +28,7 @@ const Header = props => {
         style={{
           margin: 0,
           fontWeight: 800,
-          fontSize: 60,
+          fontSize: '3em',
           fontFamily: 'kanit',
         }}>
         Calcu DeFi

@@ -14,17 +14,8 @@ import {TaskD} from './InputsSection/TaskD';
 import {TaskE} from './InputsSection/TaskE';
 import {makeStyles} from '@material-ui/core';
 import {style} from './InputsSection/styles';
-import TokenSelector from '../TokenSelector';
+import TokenSelector from './TokenSelector';
 const useStyles = makeStyles(style);
-
-const IstarterTokens = {
-  amount: undefined,
-  price: Number,
-};
-const IfinalTokens = {
-  amount: undefined,
-  price: Number,
-};
 
 const IAPR = {
   TAPR: undefined, // Tokens APR
@@ -34,8 +25,8 @@ const IAPR = {
 const Main = props => {
   const {theme} = props;
 
-  const [starterTokens, setStarterTokens] = useState(IstarterTokens);
-  const [finalTokens, setFinalTokens] = useState(IfinalTokens);
+  const [starterTokens, setStarterTokens] = useState(undefined);
+  const [finalTokens, setFinalTokens] = useState(undefined);
   const [apr, setApr] = useState(IAPR);
   const [startDate, setStartDate] = useState(null);
   const [finalDate, setFinalDate] = useState(null);
@@ -45,8 +36,8 @@ const Main = props => {
   const classes = useStyles();
 
   const resetValues = () => {
-    setStarterTokens({amount: undefined});
-    setFinalTokens({amount: undefined});
+    setStarterTokens(undefined);
+    setFinalTokens(undefined);
     setApr(prevState => {
       return {TAPR: undefined};
     });
@@ -65,30 +56,26 @@ const Main = props => {
   useEffect(() => {
     if (task === 'C') {
       let futureTokens = calculateFutureTokens(starterTokens, startDate, finalDate, apr.TAPR);
-      setFinalTokens(() => {
-        return {amount: futureTokens};
-      });
+      setFinalTokens(futureTokens);
     }
   }, [task, starterTokens, startDate, finalDate, apr.TAPR]);
 
   useEffect(() => {
     if (task === 'D') {
-      let time = calculateTime(starterTokens.amount, finalTokens.amount, apr.TAPR);
+      let time = calculateTime(starterTokens, finalTokens, apr.TAPR);
       setNecessaryTime(time);
     }
   }, [task, starterTokens, finalTokens, apr.TAPR]);
 
   useEffect(() => {
     if (task === 'E') {
-      let necessaryTokens = calculateNecessaryTokens(finalTokens.amount, apr.TAPR, necessaryTime);
-      setStarterTokens(() => {
-        return {amount: necessaryTokens};
-      });
+      let necessaryTokens = calculateNecessaryTokens(finalTokens, apr.TAPR, necessaryTime);
+      setStarterTokens(necessaryTokens);
     }
   }, [task, finalTokens, apr.TAPR, necessaryTime]);
 
   return (
-    <div>
+    <Grid item style={{width: '100%', maxWidth: 700}}>
       <div className={classes.borders}>
         <Grid container justifyContent='center'>
           <Grid item xs={12} style={{display: 'flex', justifyContent: 'center'}}>
@@ -110,7 +97,7 @@ const Main = props => {
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item xs={12} style={{margin: '1em 0em'}}>
+            <Grid container item xs={6} justifyContent='center' style={{margin: '1em 0em'}}>
               <TokenSelector />
             </Grid>
           </Grid>
@@ -173,7 +160,7 @@ const Main = props => {
       <Grid item xs={12}>
         <Footer theme={theme} />
       </Grid>
-    </div>
+    </Grid>
   );
 };
 

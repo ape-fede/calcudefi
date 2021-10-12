@@ -8,7 +8,7 @@ const useStyles = makeStyles(style);
 
 export default function NecessaryTime(props) {
   const classes = useStyles();
-  const {necessaryTime, setNecessaryTime, theme} = props;
+  const {necessaryTime, setNecessaryTime, theme, label} = props;
 
   const handleTimeChange = event => {
     console.log(event.target.value);
@@ -30,7 +30,7 @@ export default function NecessaryTime(props) {
   return (
     <Grid container direction='row' style={{width: 240}}>
       <Grid item xs={12}>
-        <p style={{margin: 0, padding: '0px 10px'}}>Tiempo necesario (días)</p>
+        <p style={{margin: 0, padding: '0px 10px'}}>{label}</p>
       </Grid>
       <form className={classes.container} noValidate autoComplete='off'>
         <NumberFormat

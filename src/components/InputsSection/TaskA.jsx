@@ -23,12 +23,12 @@ export const TaskA = props => {
   return (
     <div className={classes.borders}>
       <Grid container>
-        <Grid item xs={12} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} className={classes.centered}>
           <p>Paso 2: Complete los campos indicados</p>
         </Grid>
       </Grid>
       <Grid container direction='row' justifyContent='center' spacing={3}>
-        <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} sm={6} justifyContent={'center'}>
           <TokenCombo
             tokens={starterTokens}
             setTokens={setStarterTokens}
@@ -37,10 +37,10 @@ export const TaskA = props => {
             theme={theme}
           />
         </Grid>
-        <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} sm={6} justifyContent={'center'}>
           <DateAndTimePickers id={'start'} setStartDate={setStartDate} />
         </Grid>
-        <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} sm={6} justifyContent={'center'}>
           <TokenCombo
             tokens={finalTokens}
             setTokens={setFinalTokens}
@@ -49,16 +49,18 @@ export const TaskA = props => {
             theme={theme}
           />
         </Grid>
-        <Grid item xs={12} sm={6} style={{display: 'flex', justifyContent: 'center'}}>
+        <Grid container item xs={12} sm={6} justifyContent={'center'}>
           <DateAndTimePickers id={'final'} setFinalDate={setFinalDate} />
         </Grid>
         <Grid
+          container
           item
           xs={12}
-          style={{display: 'flex', justifyContent: 'center', textAlign: 'center'}}
-          direction={'column'}>
-          <p style={{fontFamily: 'mandhor', fontSize: '50px', margin: 0}}>APR</p>
-          <p style={{fontFamily: 'mandhor', fontSize: '40px', margin: 0}}>{apr.TAPR}%</p>
+          className={classes.centered}
+          direction='column'
+          style={{marginBottom: 15, padding: 0}}>
+          <p className={classes.resultTitle}>APR</p>
+          <p className={classes.resultSub}>{apr.TAPR}%</p>
         </Grid>
       </Grid>
     </div>
