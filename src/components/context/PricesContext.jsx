@@ -16,7 +16,7 @@ const PricesContext = createContext();
 
 const PricesProvider = ({children}) => {
   const [currentPrices, setCurrentPrices] = useState(priceInterface);
-  const data = {currentPrices, setCurrentPrices};
+  const [loading, setLoading] = useState(false);
 
   const getPrices = () => {
     return axios.get(
@@ -24,15 +24,30 @@ const PricesProvider = ({children}) => {
     );
   };
 
-  useEffect(() => {
+  const refreshPrices = () => {
+    setLoading(true);
+    setTimeout(() => {
+      updatePrices();
+    }, 500);
+  };
+
+  const updatePrices = () => {
+    setLoading(true);
     getPrices().then(res => {
       let updated = res.data;
       updated.selectedToken = currentPrices.selectedToken;
       updated.selectedPrice = currentPrices.selectedPrice;
       setCurrentPrices(updated);
+      setLoading(false);
     });
+  };
+
+  useEffect(() => {
+    updatePrices();
     //eslint-disable-next-line
   }, []);
+
+  const data = {currentPrices, setCurrentPrices, refreshPrices, loading};
 
   return <PricesContext.Provider value={data}>{children}</PricesContext.Provider>;
 };

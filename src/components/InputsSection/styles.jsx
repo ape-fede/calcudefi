@@ -19,8 +19,8 @@ export const style = {
   container: {
     width: '100%',
     borderRadius: '10px !important',
-    backgroundColor: 'rgb(134 186 223 / 8%)',
-    boxShadow: 'rgb(134 186 223 / 60%) 0px 2px 2px -1px inset',
+    backgroundColor: 'rgb(158 167 170 / 8%)',
+    boxShadow: 'rgb(158 167 170 / 60%) 0px 2px 2px -1px inset',
     padding: 5,
   },
   btn: {

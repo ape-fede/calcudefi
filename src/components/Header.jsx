@@ -21,10 +21,18 @@ const Header = props => {
         padding: 10,
         display: 'flex',
         justifyContent: 'center',
-        background: theme === 'light' ? 'rgb(134 186 223 / 40%)' : '#303030',
-        textShadow: '3px 3px 2px #c4c5c6',
-      }}>
-      <p
+      }}
+      sx={
+        theme === 'light'
+          ? {
+              background:
+                'linear-gradient(90deg, hsl(240deg 7% 62%) 0%, rgb(255 255 255 / 4%) 100%);',
+            }
+          : {
+              background: 'linear-gradient(90deg, #1b1b1b, #424242);',
+            }
+      }>
+      <h1
         style={{
           margin: 0,
           fontWeight: 800,
@@ -32,7 +40,7 @@ const Header = props => {
           fontFamily: 'kanit',
         }}>
         Calcu DeFi
-      </p>
+      </h1>
       <p style={{margin: 0, display: 'flex', alignItems: 'flex-end', textShadow: 'none'}}>(Beta)</p>
       <Button
         style={{

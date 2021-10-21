@@ -57,41 +57,39 @@ const TokenSelector = () => {
   const clean = () => setShowAddInput(false);
 
   return (
-    <Grid container direction={'row'} style={{width: 240}}>
-      <Grid item xs={12} style={{display: 'flex', justifyContent: 'center', padding: 12}}>
-        <FormControl className={classes.container}>
-          <Select
-            value={currentPrices.selectedToken}
-            onChange={handleChange}
-            autoWidth
-            variant={'outlined'}>
-            <MenuItem value='Token'>
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={'Bitcoin'} onClick={clean}>
-              Bitcoin
-            </MenuItem>
-            <MenuItem value={'Ethereum'} onClick={clean}>
-              Ethereum
-            </MenuItem>
-            <MenuItem value={'BNB'} onClick={clean}>
-              BNB
-            </MenuItem>
-            <MenuItem value={'Cake'} onClick={clean}>
-              Cake
-            </MenuItem>
-            <MenuItem value={'Banana'} onClick={clean}>
-              Banana
-            </MenuItem>
-            <MenuItem value={'Brew'} onClick={clean}>
-              Brew
-            </MenuItem>
-            <MenuItem value={' '} onClick={addInputHandler}>
-              Agregar Token
-            </MenuItem>
-          </Select>
-        </FormControl>
-      </Grid>
+    <Grid container xs={12} justifyContent='center' style={{padding: '12px 0px'}}>
+      <FormControl className={classes.container} style={{width: 230}}>
+        <Select
+          value={currentPrices.selectedToken}
+          onChange={handleChange}
+          autoWidth
+          variant={'outlined'}>
+          <MenuItem value='Token'>
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={'Bitcoin'} onClick={clean}>
+            Bitcoin
+          </MenuItem>
+          <MenuItem value={'Ethereum'} onClick={clean}>
+            Ethereum
+          </MenuItem>
+          <MenuItem value={'BNB'} onClick={clean}>
+            BNB
+          </MenuItem>
+          <MenuItem value={'Cake'} onClick={clean}>
+            Cake
+          </MenuItem>
+          <MenuItem value={'Banana'} onClick={clean}>
+            Banana
+          </MenuItem>
+          <MenuItem value={'Brew'} onClick={clean}>
+            Brew
+          </MenuItem>
+          <MenuItem value={' '} onClick={addInputHandler}>
+            Agregar Token
+          </MenuItem>
+        </Select>
+      </FormControl>
       {showAddInput ? (
         <Grid xs={12} style={{display: 'flex', justifyContent: 'center'}}>
           Próximamente...

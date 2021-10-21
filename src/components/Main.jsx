@@ -96,10 +96,8 @@ const Main = props => {
               <p style={{marginBottom: 0}}>Opcional: Elige un Token</p>
             </Grid>
           </Grid>
-          <Grid container>
-            <Grid container item xs={6} justifyContent='center' style={{margin: '1em 0em'}}>
-              <TokenSelector />
-            </Grid>
+          <Grid container xs={12} justifyContent='center' style={{margin: '1em 0em'}}>
+            <TokenSelector />
           </Grid>
         </div>
       ) : null}

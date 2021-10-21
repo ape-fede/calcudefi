@@ -1,0 +1,72 @@
+img {
+  width: 1.5em;
+  padding-right: 3px;
+}
+
+.tokensContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 0.5em;
+  width: 120px;
+}
+
+@media (max-width: 959px) {
+  .mainContainer {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 1em 1em 0em 1em;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px grey;
+    align-items: center;
+    width: -webkit-fill-available !important;
+    min-width: 180px;
+  }
+  h2 {
+    margin-top: -1em !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .mainContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200px !important;
+    display: inline-flex;
+    flex-direction: column;
+    padding-top: 1em;
+    align-items: center;
+    height: 100%;
+    margin-top: 92px;
+  }
+  .iconContainer {
+    margin-top: -1em;
+  }
+}
+
+hr {
+  width: 100%;
+  margin-bottom: 15px !important;
+}
+
+h2 {
+  margin: 0px 0px 10px 0px;
+  font-weight: 600;
+}
+.iconContainer {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.icon {
+  font-size: 0.8em;
+  padding: 8px 8px 0px 0px;
+}
+
+.MuiLoadingButton-loadingIndicator {
+  left: 0 !important;
+}

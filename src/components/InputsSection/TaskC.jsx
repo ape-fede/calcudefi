@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext} from 'react';
 import {Grid} from '@material-ui/core';
 import TokenCombo from './TokenCombo';
 import DateAndTimePickers from '../DateAndTimePickers';
