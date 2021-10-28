@@ -38,7 +38,7 @@ img {
     flex-direction: column;
     padding-top: 1em;
     align-items: center;
-    height: 100%;
+    height: calc(100vh - 92px - 1em);
     margin-top: 92px;
   }
   .iconContainer {
