@@ -3,8 +3,6 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faLinkedin} from '@fortawesome/free-brands-svg-icons';
 
 const Footer = props => {
-  const {theme} = props;
-
   return (
     <>
       <div
@@ -24,7 +22,7 @@ const Footer = props => {
             style={{
               fontSize: '1.4em',
               paddingLeft: '0.4em',
-              color: theme === 'light' ? '#0077b5' : '#fff',
+              color: '#0077b5',
             }}
           />
         </a>

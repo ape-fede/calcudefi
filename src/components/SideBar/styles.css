@@ -22,6 +22,7 @@ img {
     align-items: center;
     width: -webkit-fill-available !important;
     min-width: 180px;
+    background-image: none !important;
   }
   h2 {
     margin-top: -1em !important;

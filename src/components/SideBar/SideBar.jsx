@@ -1,4 +1,4 @@
-import {Grid, Box, Divider} from '@material-ui/core';
+import {Grid, Box, Divider, useTheme} from '@mui/material';
 import React, {useContext} from 'react';
 import cake from '../media/CAKE.png';
 import banana from '../media/BANANA.svg';
@@ -10,38 +10,28 @@ import PricesContext from '../context/PricesContext';
 import LoadingButton from '@mui/lab/LoadingButton';
 import './styles.css';
 import CachedIcon from '@mui/icons-material/Cached';
+import {ColorModeContext} from '../../App';
 
 const SideBar = props => {
-  const {theme} = props;
   const {currentPrices, refreshPrices, loading} = useContext(PricesContext);
+  const theme = useTheme();
+  const colorMode = useContext(ColorModeContext);
 
   return (
     <Grid style={{maxWidth: 700}}>
       <Box
         container
         className={'mainContainer'}
-        sx={
-          theme === 'light'
-            ? window.innerWidth > 960
-              ? {
-                  background:
-                    'linear-gradient(151deg, hsl(240deg 7% 62%) 0%, rgb(255 255 255 / 4%) 100%)',
-                }
-              : {background: '#fff'}
-            : window.innerWidth > 960
-            ? {
-                background: 'linear-gradient(151deg, #1b1b1b, #424242);',
-              }
-            : {
-                background: '#424242',
-              }
-        }>
+        style={{
+          backgroundImage: theme.palette.bgSidebar,
+        }}
+        sx={{color: 'text.primary'}}>
         <Grid container justifyContent='center' style={{width: '100%'}}>
           <Box className={'iconContainer'}>
             <LoadingButton
               onClick={() => refreshPrices()}
               loading={loading}
-              startIcon={<CachedIcon sx={{color: '#000'}} />}
+              startIcon={<CachedIcon sx={{color: 'text.primary'}} />}
               style={
                 loading
                   ? {visibility: 'hidden', width: 15, minWidth: 15, padding: 0, paddingTop: 5}

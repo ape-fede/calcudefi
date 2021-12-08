@@ -1,18 +1,13 @@
-import React from 'react';
-import {Button, Box} from '@material-ui/core';
+import React, {useContext} from 'react';
+import {useTheme} from '@mui/material/styles';
+import {Button, Box} from '@mui/material';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faLightbulb, faMoon} from '@fortawesome/free-solid-svg-icons';
+import {ColorModeContext} from '../App';
 
 const Header = props => {
-  const {theme, setTheme} = props;
-
-  const changeTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  };
+  const theme = useTheme();
+  const colorMode = useContext(ColorModeContext);
 
   return (
     <Box
@@ -21,17 +16,11 @@ const Header = props => {
         padding: 10,
         display: 'flex',
         justifyContent: 'center',
+        backgroundImage: theme.palette.bgHeader,
       }}
-      sx={
-        theme === 'light'
-          ? {
-              background:
-                'linear-gradient(90deg, hsl(240deg 7% 62%) 0%, rgb(255 255 255 / 4%) 100%);',
-            }
-          : {
-              background: 'linear-gradient(90deg, #1b1b1b, #424242);',
-            }
-      }>
+      sx={{
+        color: 'text.primary',
+      }}>
       <h1
         style={{
           margin: 0,
@@ -48,8 +37,8 @@ const Header = props => {
           position: 'absolute',
           left: '80vw',
         }}
-        onClick={changeTheme}>
-        {theme === 'light' ? (
+        onClick={colorMode.toggleColorMode}>
+        {theme.palette.mode === 'light' ? (
           <FontAwesomeIcon icon={faMoon} style={{fontSize: '2em'}} />
         ) : (
           <FontAwesomeIcon icon={faLightbulb} style={{fontSize: '2em'}} />

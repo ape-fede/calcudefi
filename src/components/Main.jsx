@@ -15,6 +15,7 @@ import {TaskE} from './InputsSection/TaskE';
 import {makeStyles} from '@material-ui/core';
 import {style} from './InputsSection/styles';
 import TokenSelector from './TokenSelector';
+
 const useStyles = makeStyles(style);
 
 const IAPR = {
@@ -23,8 +24,6 @@ const IAPR = {
 };
 
 const Main = props => {
-  const {theme} = props;
-
   const [starterTokens, setStarterTokens] = useState(undefined);
   const [finalTokens, setFinalTokens] = useState(undefined);
   const [apr, setApr] = useState(IAPR);
@@ -84,7 +83,7 @@ const Main = props => {
         </Grid>
         <Grid container>
           <Grid item xs={12} style={{margin: '0.75em 1em'}}>
-            <TaskSelector task={task} setTask={setTask} resetValues={resetValues} theme={theme} />
+            <TaskSelector task={task} setTask={setTask} resetValues={resetValues} />
           </Grid>
         </Grid>
       </div>
@@ -96,7 +95,7 @@ const Main = props => {
               <p style={{marginBottom: 0}}>Opcional: Elige un Token</p>
             </Grid>
           </Grid>
-          <Grid container xs={12} justifyContent='center' style={{margin: '1em 0em'}}>
+          <Grid container justifyContent='center' style={{margin: '1em 0em'}}>
             <TokenSelector />
           </Grid>
         </div>
@@ -114,7 +113,6 @@ const Main = props => {
           setFinalDate={setFinalDate}
           apr={apr}
           setApr={setApr}
-          theme={theme}
         />
       ) : null}
       {task === 'C' ? (
@@ -127,7 +125,6 @@ const Main = props => {
           setFinalDate={setFinalDate}
           apr={apr}
           setApr={setApr}
-          theme={theme}
         />
       ) : null}
       {task === 'D' ? (
@@ -139,7 +136,6 @@ const Main = props => {
           apr={apr}
           setApr={setApr}
           necessaryTime={necessaryTime}
-          theme={theme}
         />
       ) : null}
       {task === 'E' ? (
@@ -152,11 +148,10 @@ const Main = props => {
           setApr={setApr}
           necessaryTime={necessaryTime}
           setNecessaryTime={setNecessaryTime}
-          theme={theme}
         />
       ) : null}
       <Grid item xs={12}>
-        <Footer theme={theme} />
+        <Footer />
       </Grid>
     </Grid>
   );
