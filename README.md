@@ -1,7 +1,5 @@
 www.calcudefi.com 😁😁
-
-![image](https://user-images.githubusercontent.com/75544302/147267142-01b84afd-9701-48d5-8576-840a4d5b8093.png)
-![image](https://user-images.githubusercontent.com/75544302/147267503-3aefaab1-02fd-45c8-a9a7-9e93ef93958f.png)
+![image](https://user-images.githubusercontent.com/75544302/147274152-751402c4-a769-4acf-be3e-42f3b961585e.png)
 
 Features:
  API-Rest, Hooks, useEffect, useContext, useState, Responsive Design.
