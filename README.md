@@ -1,6 +1,3 @@
-								www.calcudefi.com
-
-
 Features:
  API-Rest, Hooks, useEffect, useContext, useState, Responsive Design.
  
