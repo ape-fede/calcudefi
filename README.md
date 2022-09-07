@@ -11,4 +11,4 @@ Ux improvements (color theme), english translation, modal to add tokens, imperma
 
 Enjoy! 😁
 
-Federico Straus
+Ape Fede
