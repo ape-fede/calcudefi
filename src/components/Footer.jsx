@@ -12,9 +12,9 @@ const Footer = props => {
           justifyContent: 'flex-end',
           paddingRight: '1em',
         }}>
-        <p style={{margin: 0}}>Calcu DeFi by Federico Straus.</p>
+        <p style={{margin: 0}}>Calcu DeFi by Fede.</p>
         <a
-          href='https://www.linkedin.com/in/federico-straus12345/'
+          href='https://www.linkedin.com/in/fede-s/'
           target='_blank'
           rel='noreferrer'>
           <FontAwesomeIcon
