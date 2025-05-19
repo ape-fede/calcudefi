@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {Grid} from '@material-ui/core';
-import NumberFormat from 'react-number-format';
+import {NumberFormatBase} from 'react-number-format';
 import {style} from './styles';
 import {round} from '../TasksFunctions';
 import {Button} from '@material-ui/core';
@@ -76,7 +76,7 @@ export default function TokenCombo(props) {
               style={{flexWrap: 'initial', marginRight: 5}}>
               <Grid item>
                 <form noValidate autoComplete='off'>
-                  <NumberFormat
+                  <NumberFormatBase
                     value={mainToken ? tokens : usd}
                     onChange={event => {
                       handleTokensChange(event);

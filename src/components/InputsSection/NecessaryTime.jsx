@@ -1,6 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
-import NumberFormat from 'react-number-format';
+import {NumberFormatBase} from 'react-number-format';
 import {style} from './styles';
 import {Grid} from '@material-ui/core';
 
@@ -33,7 +33,7 @@ export default function NecessaryTime(props) {
         <p style={{margin: 0, padding: '0px 10px'}}>{label}</p>
       </Grid>
       <form className={classes.container} noValidate autoComplete='off'>
-        <NumberFormat
+        <NumberFormatBase
           value={necessaryTime}
           onChange={event => handleTimeChange(event)}
           placeholder={'0'}
